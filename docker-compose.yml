@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  mongodb:
+    restart: always
+    container_name: saas_boilerplate
+    image: mongo:7.0
+
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=cmglezpdev
+      - MONGO_INITDB_ROOT_PASSWORD=sq8hivPz6gbNzwz8
+      - MONGO_INITDB_DATABASE=boilerplate
+    
+    ports:
+      - '27017:27017'
+    
+
+volumes:
+  saas_mongodb:
