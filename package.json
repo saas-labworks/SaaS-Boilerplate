@@ -20,10 +20,12 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "daisyui": "^4.12.7",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
     "prisma": "^5.15.1",
+    "standard": "^17.1.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
