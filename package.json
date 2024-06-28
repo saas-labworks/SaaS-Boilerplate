@@ -11,10 +11,13 @@
   "dependencies": {
     "@auth/prisma-adapter": "^2.4.1",
     "@prisma/client": "^5.15.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.396.0",
     "next": "14.2.4",
     "next-auth": "5.0.0-beta.19",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
     "@types/node": "^20",
