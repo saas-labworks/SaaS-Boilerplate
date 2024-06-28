@@ -55,12 +55,17 @@ export async function Faqs () {
     <section className='grid grid-cols-1 lg:grid-cols-2 my-10'>
       <div>
         <h3 className='text-3xl font-bold'>Frequently Asked Questions</h3>
-        <p className='text-sm mt-3'>Have another question? Contact me by email</p>
+        <p className='text-sm mt-3 flex gap-1'>
+          <span>Have another question? Contact me on</span>
+          <a href='https://x.com/cmglezpdev' className='text-accent underline'>Twitter</a>
+          <span>or by</span>
+          <a href='mailto:cmglezpdev@gmail.com' className='text-accent underline'>email</a>
+        </p>
       </div>
       <div className='join join-vertical w-full rounded-none'>
         {
           faqs.map((faq, i) => (
-            <div key={i} className='collapse collapse-arrow join-item border-gray-700 border-y'>
+            <div key={i} className='collapse collapse-arrow join-item border-neutral border-y'>
               <input type='checkbox' name='my-accordion-4' className='peer' />
               <div className='collapse-title text-lg font-semibold peer-checked:text-accent'>{faq.title}</div>
               <div className='collapse-content'>
