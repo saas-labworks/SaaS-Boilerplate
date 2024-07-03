@@ -52,7 +52,7 @@ If you use Magic Link sign-ups, you'll spend $1 per 1,000 users.
 
 export async function Faqs () {
   return (
-    <section className='grid grid-cols-1 lg:grid-cols-2 my-10'>
+    <section className='container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 my-10'>
       <div>
         <h3 className='text-3xl font-bold'>Frequently Asked Questions</h3>
         <p className='text-sm mt-3 flex gap-1'>
@@ -62,7 +62,7 @@ export async function Faqs () {
           <a href='mailto:cmglezpdev@gmail.com' className='text-accent underline'>email</a>
         </p>
       </div>
-      <div className='join join-vertical w-full rounded-none'>
+      <div className='join join-vertical w-full rounded-none mt-6 lg:mt-0'>
         {
           faqs.map((faq, i) => (
             <div key={i} className='collapse collapse-arrow join-item border-neutral border-y'>
