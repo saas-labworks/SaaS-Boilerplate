@@ -11,7 +11,7 @@ export function Pricing () {
       <div className='w-full flex flex-col items-center lg:flex-row justify-center gap-5'>
 
         <div className='relative border-2 border-primary rounded-box'>
-          <div className='badge badge-primary absolute z-10 text-xs font-bold -top-2 left-1/3'>LAUNCH OFFER</div>
+          <div className='badge badge-primary absolute z-10 text-xs font-bold -top-2 left-1/2 transform -translate-x-1/2'>LAUNCH OFFER</div>
           <div className='card w-[420px] flex flex-col gap-6 p-6 bg-base-200'>
             <div>
               <h2 className='card-title text-accent'>Started</h2>
