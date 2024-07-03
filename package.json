@@ -11,6 +11,8 @@
   "dependencies": {
     "@auth/prisma-adapter": "^2.4.1",
     "@prisma/client": "^5.15.1",
+    "@upstash/ratelimit": "^1.2.1",
+    "@upstash/redis": "^1.31.6",
     "clsx": "^2.1.1",
     "lucide-react": "^0.396.0",
     "next": "14.2.4",
