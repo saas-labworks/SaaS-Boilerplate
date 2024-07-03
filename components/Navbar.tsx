@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+// https:// shipfa.st/docs/components/header
 export function Navbar () {
   return (
     <nav className='navbar bg-base-200 border-b-base-100 border-b-2'>

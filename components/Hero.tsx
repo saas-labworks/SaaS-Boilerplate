@@ -1,3 +1,4 @@
+// https://shipfa.st/docs/components/hero
 export function Hero () {
   return (
     <section className='hero bg-base-200 min-h-screen'>
