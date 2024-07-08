@@ -17,15 +17,17 @@ const ratelimit = new Ratelimit({
 
 const { auth } = NextAuth(authConfig)
 export default auth(async function middleware (request: NextRequest) {
-  const ip = request.ip ?? '127.0.0.1'
-  const { success } = await ratelimit.limit(ip)
+  // const ip = request.ip ?? '127.0.0.1'
+  // const { success } = await ratelimit.limit(ip)
 
-  return success
-    ? NextResponse.next()
-    : NextResponse.redirect(
-      new URL('/blocked', request.url),
-      { status: 429 }
-    )
+  // return success
+  //   ? NextResponse.next()
+  //   : NextResponse.redirect(
+  //     new URL('/blocked', request.url),
+  //     { status: 429 }
+  //   )
+
+  return NextResponse.next()
 })
 
 export const config = {
