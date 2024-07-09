@@ -1,4 +1,9 @@
-'use server'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger
+} from './ui/accordion'
 
 type Faq = {
   title: string;
@@ -57,24 +62,21 @@ export async function Faqs () {
         <h3 className='text-3xl font-bold'>Frequently Asked Questions</h3>
         <p className='text-sm mt-3 flex gap-1'>
           <span>Have another question? Contact me on</span>
-          <a href='https://x.com/cmglezpdev' className='text-accent underline'>Twitter</a>
+          <a href='https://x.com/cmglezpdev' target='_blank' className='font-bold text-accent-foreground underline' rel='noreferrer'>Twitter</a>
           <span>or by</span>
-          <a href='mailto:cmglezpdev@gmail.com' className='text-accent underline'>email</a>
+          <a href='mailto:cmglezpdev@gmail.com' className='font-bold text-accent-foreground underline'>email</a>
         </p>
       </div>
-      <div className='join join-vertical w-full rounded-none mt-6 lg:mt-0'>
+      <Accordion type='single' collapsible className='mt-6 lg:mt-0'>
         {
           faqs.map((faq, i) => (
-            <div key={i} className='collapse collapse-arrow join-item border-neutral border-y'>
-              <input type='checkbox' name='my-accordion-4' className='peer' />
-              <div className='collapse-title text-lg font-semibold peer-checked:text-accent'>{faq.title}</div>
-              <div className='collapse-content'>
-                <p>{faq.content}</p>
-              </div>
-            </div>
+            <AccordionItem key={i} value={`question-${i}`}>
+              <AccordionTrigger>{faq.title}</AccordionTrigger>
+              <AccordionContent>{faq.content}</AccordionContent>
+            </AccordionItem>
           ))
         }
-      </div>
+      </Accordion>
     </section>
   )
 }

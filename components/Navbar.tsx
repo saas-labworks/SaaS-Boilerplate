@@ -10,7 +10,7 @@ import Image from 'next/image'
 
 export function Navbar () {
   return (
-    <nav className='w-full flex justify-between p-4'>
+    <nav className='w-full flex justify-between p-4 fixed backdrop-blur-sm'>
       <div>
         <Image src='/logo.webp' height={50} width={50} alt='SaaS Lab' />
       </div>
