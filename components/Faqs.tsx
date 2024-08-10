@@ -10,7 +10,7 @@ type Faq = {
   content: string;
 }
 
-const faqs:Faq[] = [
+const faqs: Faq[] = [
   {
     title: 'What do I get exactly?',
     content: '1/ The NextJS starter with all the boilerplate code you need to run an online business: a payment system, a database, login, a blog, UI components, and much more. The repo is available in: - Javascript and Typescript - /app router and /pages router.'
@@ -55,7 +55,7 @@ If you use Magic Link sign-ups, you'll spend $1 per 1,000 users.
   }
 ]
 
-export async function Faqs () {
+export async function Faqs() {
   return (
     <section className='container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 my-10'>
       <div>
