@@ -9,8 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth/prisma-adapter": "^2.4.1",
-    "@prisma/client": "^5.15.1",
+    "@auth/mongodb-adapter": "^3.4.2",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -25,6 +24,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.396.0",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.2",
     "next": "14.2.4",
     "next-auth": "5.0.0-beta.19",
     "nodemailer": "^6.9.14",
@@ -42,7 +43,6 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
-    "prisma": "^5.15.1",
     "standard": "^17.1.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
