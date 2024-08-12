@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -8,7 +7,7 @@ import {
 import { Button } from './ui/button'
 import Image from 'next/image'
 
-export function Navbar () {
+export function Navbar() {
   return (
     <nav className='w-full flex justify-between p-4 fixed backdrop-blur-sm'>
       <div>
@@ -17,22 +16,16 @@ export function Navbar () {
 
       <NavigationMenu>
         <NavigationMenuList className='flex gap-6'>
-          <NavigationMenuItem>
-            <Link href='/'>
-              <NavigationMenuLink>Features</NavigationMenuLink>
-            </Link>
+          <NavigationMenuItem asChild>
+            <NavigationMenuLink href='/features'>Features</NavigationMenuLink>
           </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <Link href='/about'>
-              <NavigationMenuLink>Pricing</NavigationMenuLink>
-            </Link>
+          <NavigationMenuItem asChild>
+            <NavigationMenuLink href='/pricing'>Pricing</NavigationMenuLink>
           </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <Link href='/about'>
-              <NavigationMenuLink>Testimonials</NavigationMenuLink>
-            </Link>
+          <NavigationMenuItem asChild>
+            <NavigationMenuLink href='/about'>Testimonials</NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
