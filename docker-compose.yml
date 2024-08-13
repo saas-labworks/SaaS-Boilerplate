@@ -1,41 +1,17 @@
-# Copyright Broadcom, Inc. All Rights Reserved.
-# SPDX-License-Identifier: APACHE-2.0
-
-version: '2'
-
+version: '3.8'
 services:
-  mongodb-primary:
-    image: docker.io/bitnami/mongodb:7.0
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    restart: unless-stopped
     environment:
-      - MONGODB_ADVERTISED_HOSTNAME=mongodb-primary
-      - MONGODB_REPLICA_SET_MODE=primary
-      - MONGODB_ROOT_PASSWORD=password123
-      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - '27017:27017'
     volumes:
-      - 'mongodb_master_data:/bitnami/mongodb'
-
-  mongodb-secondary:
-    image: docker.io/bitnami/mongodb:7.0
-    depends_on:
-      - mongodb-primary
-    environment:
-      - MONGODB_ADVERTISED_HOSTNAME=mongodb-secondary
-      - MONGODB_REPLICA_SET_MODE=secondary
-      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
-      - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
-      - MONGODB_REPLICA_SET_KEY=replicasetkey123
-
-  mongodb-arbiter:
-    image: docker.io/bitnami/mongodb:7.0
-    depends_on:
-      - mongodb-primary
-    environment:
-      - MONGODB_ADVERTISED_HOSTNAME=mongodb-arbiter
-      - MONGODB_REPLICA_SET_MODE=arbiter
-      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
-      - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
-      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - saas-boilderplate-db:/data/db
 
 volumes:
-  mongodb_master_data:
+  saas-boilderplate-db:
     driver: local
