@@ -12,6 +12,6 @@ const SessionSchema = new mongoose.Schema<SessionDocument>({
 export const Session =
   mongoose.models.Session ??
   mongoose.model<SessionDocument>(
-    'sessions',
+    'Session',
     SessionSchema
   )

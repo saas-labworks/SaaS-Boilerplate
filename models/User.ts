@@ -1,5 +1,6 @@
-import { UserDocument } from '@/interface/models'
 import mongoose from 'mongoose'
+import { UserDocument } from '@/interface/models'
+import toJSON from './plugins/toJSON'
 
 const UserSchema = new mongoose.Schema<UserDocument>({
   name: { type: String, required: true },
@@ -10,6 +11,11 @@ const UserSchema = new mongoose.Schema<UserDocument>({
   timestamps: true
 })
 
+UserSchema.plugin(toJSON)
+
 export const User =
   mongoose.models.User ??
-  mongoose.model('users', UserSchema)
+  mongoose.model<UserDocument>(
+    'User',
+    UserSchema
+  )

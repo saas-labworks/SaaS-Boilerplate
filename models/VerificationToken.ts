@@ -12,6 +12,6 @@ const VerificationTokenSchema = new mongoose.Schema<VerificationTokenDocument>({
 export const VerificationToken =
   mongoose.models.VerificationToken ??
   mongoose.model<VerificationTokenDocument>(
-    'verification_tokens',
+    'VerificationToken',
     VerificationTokenSchema
   )

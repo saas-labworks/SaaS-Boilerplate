@@ -20,6 +20,6 @@ const AccountSchema = new mongoose.Schema<AccountDocument>({
 export const Account =
   mongoose.models.Account ??
   mongoose.model<AccountDocument>(
-    'accounts',
+    'Account',
     AccountSchema
   )
