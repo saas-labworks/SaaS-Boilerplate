@@ -4,8 +4,9 @@ import {
   NavigationMenuLink,
   NavigationMenuList
 } from './ui/navigation-menu'
-import { Button } from './ui/button'
+import { buttonVariants } from './ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function Navbar() {
   return (
@@ -31,7 +32,7 @@ export function Navbar() {
       </NavigationMenu>
 
       <div>
-        <Button>Start building</Button>
+        <Link href='/signin' className={buttonVariants({ variant: 'default' })}>Start building</Link>
       </div>
     </nav>
 
