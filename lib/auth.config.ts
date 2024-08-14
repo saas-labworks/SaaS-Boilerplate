@@ -11,19 +11,30 @@ export default {
     })
   ],
   callbacks: {
-    session: ({ session, user }) => {
+    jwt: ({ token, user, account }) => {
       console.log({
-        session,
-        user
+        token,
+        user,
+        account
       })
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          id: user.id
-        }
+      if (user) {
+        token.id = user.id
       }
+      return token
     }
+    // session: ({ session, user }) => {
+    //   console.log({
+    //     session,
+    //     user
+    //   })
+    //   return {
+    //     ...session,
+    //     user: {
+    //       ...session.user,
+    //       id: user.id
+    //     }
+    //   }
+    // }
   },
   pages: {
     signIn: '/signin'
