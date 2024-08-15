@@ -1,40 +1,33 @@
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList
-} from './ui/navigation-menu'
-import { buttonVariants } from './ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
+import { buttonVariants } from './ui/button'
+import { DesktopNavbar, MobileNavbar } from './landing/header'
+import { navbarItems } from '@/content'
 
 export function Navbar() {
   return (
     <nav className='w-full flex justify-between p-4 fixed backdrop-blur-sm'>
-      <div>
-        <Image src='/logo.webp' height={50} width={50} alt='SaaS Lab' />
+
+      <div className='md:hidden'>
+        <MobileNavbar
+          button={<Image src='/logo.webp' height={50} width={50} alt='SaaS Lab' />}
+          items={navbarItems}
+        />
+        <Image
+          src='/logo.webp'
+          height={50} width={50}
+          alt='SaaS Lab'
+          className='hidden md:block'
+        />
       </div>
 
-      <NavigationMenu>
-        <NavigationMenuList className='flex gap-6'>
-          <NavigationMenuItem asChild>
-            <NavigationMenuLink href='/features'>Features</NavigationMenuLink>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem asChild>
-            <NavigationMenuLink href='/pricing'>Pricing</NavigationMenuLink>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem asChild>
-            <NavigationMenuLink href='/about'>Testimonials</NavigationMenuLink>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+      <div className='hidden md:flex w-full justify-center'>
+        <DesktopNavbar items={navbarItems} />
+      </div>
 
       <div>
         <Link href='/signin' className={buttonVariants({ variant: 'default' })}>Start building</Link>
       </div>
     </nav>
-
   )
 }
