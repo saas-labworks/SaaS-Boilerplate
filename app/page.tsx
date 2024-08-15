@@ -5,6 +5,7 @@ import { Faqs } from '@/components/Faqs'
 import { Footer } from '@/components/Footer'
 import { Suspense } from 'react'
 import { WaitListButton } from '@/components/landing/Waitlist'
+import { CTA } from '@/components/landing/CTA'
 
 export default function Home() {
   return (
@@ -18,8 +19,8 @@ export default function Home() {
         {/* <FeaturesAccordion /> */}
         <Pricing />
         <Faqs />
-        {/* <CTA /> */}
-        <WaitListButton />
+        <CTA />
+        {/* <WaitListButton /> */}
       </main>
       <Footer />
     </>
