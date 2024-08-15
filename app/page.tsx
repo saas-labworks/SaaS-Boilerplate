@@ -4,6 +4,7 @@ import { Pricing } from '@/components/Pricing'
 import { Faqs } from '@/components/Faqs'
 import { Footer } from '@/components/Footer'
 import { Suspense } from 'react'
+import { WaitListButton } from '@/components/landing/Waitlist'
 
 export default function Home() {
   return (
@@ -11,13 +12,14 @@ export default function Home() {
       <Suspense>
         <Navbar />
       </Suspense>
-      <main className='w-full'>
+      <main className='w-full px-2'>
         <Hero />
         {/* <Problem /> */}
         {/* <FeaturesAccordion /> */}
         <Pricing />
         <Faqs />
         {/* <CTA /> */}
+        <WaitListButton />
       </main>
       <Footer />
     </>
