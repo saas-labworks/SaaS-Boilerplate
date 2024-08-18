@@ -1,6 +1,11 @@
+import { SideMenuItem } from '@/interface/menu'
 import { CreditCard, LineChart, Users } from 'lucide-react'
 
-export const sideMenuContent = {
+interface AdminSideMenuContent {
+  items: SideMenuItem[]
+}
+
+export const adminSideMenuContent: AdminSideMenuContent = {
   items: [
     {
       icon: <LineChart className='h-4 w-4' />,

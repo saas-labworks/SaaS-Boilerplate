@@ -1,9 +1,13 @@
 import Link from 'next/link'
 import { Package2, Bell } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { sideMenuContent } from '@/content'
+import { SideMenuItem } from '@/interface/menu'
 
-export function AdminSideDesktopMenu() {
+type Props = {
+  items: SideMenuItem[];
+}
+
+export function SideDesktopMenu({ items }: Props) {
   return (
     <div className='hidden border-r bg-muted/40 md:block'>
       <div className='flex h-full max-h-screen flex-col gap-2'>
@@ -19,7 +23,7 @@ export function AdminSideDesktopMenu() {
         </div>
         <div className='flex-1'>
           <nav className='grid items-start px-2 text-sm font-medium lg:px-4'>
-            {sideMenuContent.items.map((item, index) => (
+            {items.map((item, index) => (
               <Link
                 key={index}
                 href={item.link}

@@ -2,9 +2,13 @@ import Link from 'next/link'
 import { Menu } from 'lucide-react'
 import { SheetContent, SheetTrigger, Sheet } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
-import { sideMenuContent } from '@/content'
+import { SideMenuItem } from '@/interface/menu'
 
-export function AdminSideMobileMenu() {
+type Props = {
+  items: SideMenuItem[];
+}
+
+export function SideMobileMenu({ items }: Props) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -19,7 +23,7 @@ export function AdminSideMobileMenu() {
       </SheetTrigger>
       <SheetContent side='left' className='flex flex-col'>
         <nav className='grid gap-2 text-lg font-medium'>
-          {sideMenuContent.items.map((item, index) => (
+          {items.map((item, index) => (
             <Link
               key={index}
               href={item.link}

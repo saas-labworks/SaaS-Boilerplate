@@ -6,9 +6,13 @@ import {
   DropdownMenuItem, DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
-import { sideMenuContent } from '@/content'
+import { SideMenuItem } from '@/interface/menu'
 
-export function UserDropdownMenu() {
+type Props = {
+  items: SideMenuItem[];
+}
+
+export function UserDropdownMenu({ items }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -18,7 +22,7 @@ export function UserDropdownMenu() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
-        {sideMenuContent.items.map((item, index) => (
+        {items.map((item, index) => (
           <Link
             key={index}
             href={item.link}
