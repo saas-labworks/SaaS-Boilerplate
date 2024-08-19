@@ -15,6 +15,8 @@ export function PaymentCard({
   featured = false
 }: Props) {
   const plan = isYearly ? price.yearly : price.monthly
+  const saved = 12 * (price.monthly.value - price.yearly.value)
+  const percent = Math.round((saved / (price.monthly.value * 12)) * 100)
 
   return (
     <Card className={cn('grid gap-6 p-6 sm:p-8', { 'bg-primary text-primary-foreground': featured })}>
@@ -26,17 +28,17 @@ export function PaymentCard({
         {isYearly && (
           <span className='line-through text-lg'>${price.monthly.value}</span>
         )}
-        <span className='text-4xl font-bold'>${plan.value}</span>
-        <span className='text-muted-foreground'>/{isYearly ? 'yr' : 'mo'}</span>
+        <span className='text-5xl font-bold'>${plan.value}</span>
+        <div className='flex flex-col text-xs text-muted-foreground'>
+          {isYearly && (
+            <>
+              <span>save {percent}%</span>
+              <span>billing yearly ${plan.value * 12}</span>
+            </>
+          )}
+          <span className='text-muted-foreground font-bold'>/month</span>
+        </div>
       </div>
-      <ul className='grid gap-2 text-muted-foreground'>
-        {features.map((feature, index) => (
-          <li key={index} className='flex items-center gap-2'>
-            <CircleCheck className={cn('h-4 w-4', { 'text-green-500': feature.included })} />
-            {feature.text}
-          </li>
-        ))}
-      </ul>
       <Button className='w-full'>
         <a
           target='_blank'
@@ -46,6 +48,14 @@ export function PaymentCard({
           Get Started
         </a>
       </Button>
+      <ul className='grid gap-2 text-muted-foreground'>
+        {features.map((feature, index) => (
+          <li key={index} className='flex items-center gap-2'>
+            <CircleCheck className={cn('h-4 w-4', { 'text-green-500': feature.included })} />
+            {feature.text}
+          </li>
+        ))}
+      </ul>
     </Card>
   )
 }
