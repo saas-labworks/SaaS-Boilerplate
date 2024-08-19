@@ -26,8 +26,8 @@ export function Footer() {
 
       <nav className='flex flex-col items-center md:items-start'>
         <h6 className='text-lg font-bold'>Legal</h6>
-        <Link href='/' className='hover:underline py-1'>Terms of use</Link>
-        <Link href='/' className='hover:underline py-1'>Privacy policy</Link>
+        <Link href='/tos' className='hover:underline py-1'>Terms of use</Link>
+        <Link href='/privacy-policy' className='hover:underline py-1'>Privacy policy</Link>
       </nav>
     </footer>
   )
