@@ -1,18 +1,50 @@
 import { Button } from '@/components/ui/button'
 import {
-  Card,
-  CardContent,
+  Card, CardContent,
   CardDescription,
-  CardHeader,
-  CardTitle
+  CardHeader, CardTitle
 } from '@/components/ui/card'
-import { signIn } from '@/lib/auth'
+import { auth, signIn } from '@/lib/auth'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { AuthError } from 'next-auth'
-import { redirect } from 'next/navigation'
+import { redirect, RedirectType } from 'next/navigation'
+import { Separator } from '@/components/ui/separator'
 
-export default function SingInPage() {
+export default async function SingInPage() {
+  const session = await auth()
+  if (!session) {
+    console.log('User no logged. Continue in this page')
+  }
+  if (session?.user) {
+    console.log('User logged. Redirect to dashboard')
+    return redirect('/dashboard/profile', RedirectType.replace)
+  }
+
+  const siginInOAuth = async () => {
+    'use server'
+    try {
+      await signIn('google')
+    } catch (error) {
+      if (error instanceof AuthError) {
+        return redirect(`$/signin?error=${error.type}`)
+      }
+      throw error
+    }
+  }
+
+  const siginInMagicLink = async (formData: FormData) => {
+    'use server'
+    try {
+      await signIn('nodemailer', formData)
+    } catch (error) {
+      if (error instanceof AuthError) {
+        return redirect(`$/signin?error=${error.type}`)
+      }
+      throw error
+    }
+  }
+
   return (
     <div className='w-full h-screen grid place-content-center'>
       <Card className='mx-auto max-w-sm'>
@@ -23,29 +55,7 @@ export default function SingInPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form
-            className='grid gap-4'
-            action={async (formData) => {
-              'use server'
-              try {
-                // await signIn('nodemailer', formData)
-                await signIn('google')
-              } catch (error) {
-                // Signin can fail for a number of reasons, such as the user
-                // not existing, or the user not having the correct role.
-                // In some cases, you may want to redirect to a custom error
-                if (error instanceof AuthError) {
-                  return redirect(`$/signin?error=${error.type}`)
-                }
-
-                // Otherwise if a redirects happens NextJS can handle it
-                // so you can just re-thrown the error and let NextJS handle it.
-                // Docs:
-                // https://nextjs.org/docs/app/api-reference/functions/redirect#server-component
-                throw error
-              }
-            }}
-          >
+          <form action={siginInMagicLink}>
             <div className='grid gap-2'>
               <Label htmlFor='email'>Email</Label>
               <Input
@@ -58,6 +68,17 @@ export default function SingInPage() {
             <Button type='submit' className='w-full'>
               Login with email
             </Button>
+          </form>
+
+          <div className='w-full grid grid-cols-[1fr_20px_1fr] items-center gap-4 my-4'>
+            <Separator orientation='horizontal' />
+            <strong className='text-muted-foreground'>OR</strong>
+            <Separator orientation='horizontal' />
+          </div>
+
+          <form
+            action={siginInOAuth}
+          >
             <Button type='submit' variant='outline' className='w-full'>
               Login with Google
             </Button>
