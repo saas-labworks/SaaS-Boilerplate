@@ -3,7 +3,10 @@ export interface UserDocument {
   name?: string;
   email: string;
   image?: string;
+  customerId?: string;
   emailVerified?: Date;
+  hasAccess: boolean;
+  priceId: string;
 }
 
 export interface AccountDocument {

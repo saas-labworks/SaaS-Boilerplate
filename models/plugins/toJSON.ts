@@ -18,10 +18,6 @@ const deleteAtPath = (obj: any, path: string[], index: number) => {
 const toJSON = <T extends Document>(schema: any) => {
   let transform: (doc: T, ret: any, options: any) => any | undefined
 
-  console.log('=====================')
-  console.log(schema)
-  console.log('=====================')
-
   if (schema.options.toJSON && schema.options.toJSON.transform) {
     transform = schema.options.toJSON.transform
   }

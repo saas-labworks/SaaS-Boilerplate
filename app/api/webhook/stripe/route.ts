@@ -8,14 +8,13 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!
 
 export async function POST(req: Request) {
+  console.log('Icomming stripe request [Webhook]')
   await connectMongo()
 
   const body = await req.text()
   const signature = headers().get('stripe-signature')!
-
   let event: Stripe.Event
 
-  // verify Stripe event is legit
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret)
   } catch (error) {
@@ -26,33 +25,30 @@ export async function POST(req: Request) {
 
   const data = event.data
   const eventType = event.type
+  console.log(`Incomming stripe event: ${eventType}`)
 
   try {
     switch (eventType) {
       case 'checkout.session.completed': {
         // First payment is successful and a subscription is created (if mode was set to "subscription" in ButtonCheckout)
         // ✅ Grant access to the product
-        let user: typeof User
         const session = await stripe.checkout.sessions.retrieve(
-          data.object.id,
+          (data.object as { id: string }).id,
           { expand: ['line_items'] }
         )
 
-        const customerId = session.customer
-        const customer = await stripe.customers.retrieve(customerId)
-        const priceId = session.line_items?.data[0].price?.id
+        const customerId = session.customer!.toString()
+        const customer = (await stripe.customers.retrieve(customerId)) as Stripe.Customer
+        const priceId = session.line_items?.data[0].price?.id!
 
-        if (customer.email) {
-          user = await User.create({
-            email: customer.email,
-            name: customer.name,
-            customerId
-          })
+        console.log(`Searchig the user ${customer.email} in the database.`)
+        const user = await User.findOne({
+          customerId: customer.id
+        })
 
-          await user.save()
-        } else {
-          console.error('No user found')
-          throw new Error('No user found')
+        if (!user) {
+          console.error(`User ${customer.email} not found in database`)
+          throw new Error(`User ${customer.email} not found in database`)
         }
 
         // Update user data + Grant user access to your product. It's a boolean in the database, but could be a number of credits, etc...
@@ -68,12 +64,17 @@ export async function POST(req: Request) {
         // ❌ Revoke access to the product
         // The customer might have changed the plan (higher or lower plan, cancel soon etc...)
         const subscription = await stripe.subscriptions.retrieve(
-          data.object.id
+          (data.object as { id: string }).id
         )
 
         const user = await User.findOne({
           customerId: subscription.customer
         })
+
+        if (!user) {
+          console.error('No user found')
+          throw new Error('No user found')
+        }
 
         // Revoke access to your product
         user.hasAccess = false
