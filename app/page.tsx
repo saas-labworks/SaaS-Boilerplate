@@ -2,12 +2,12 @@ import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/components/Hero'
 import { Pricing } from '@/components/Pricing'
 import { Faqs } from '@/components/Faqs'
-import { Footer } from '@/components/Footer'
 import { Suspense } from 'react'
 // import { WaitListButton } from '@/components/landing/Waitlist'
 import { Cta } from '@/components/landing/CTA'
 import { TestimonialsGrid } from '@/components/landing/testimonials'
 import { Features, WithAndWithout } from '@/components/landing/Features'
+import { DetailedFooter } from '@/components/footer'
 
 export default function Home() {
   return (
@@ -27,7 +27,7 @@ export default function Home() {
         <Cta />
         {/* <WaitListButton /> */}
       </main>
-      <Footer />
+      <DetailedFooter />
     </>
   )
 }
