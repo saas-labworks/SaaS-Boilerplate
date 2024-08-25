@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-export function Footer() {
+export function DetailedFooter() {
   return (
     <footer className='w-full flex flex-col items-center justify-between gap-10 md:flex-row p-10'>
       <div className='w-full md:w-auto flex flex-col items-center'>
