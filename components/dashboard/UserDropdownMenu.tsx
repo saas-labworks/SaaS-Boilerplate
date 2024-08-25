@@ -7,6 +7,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
 import { SideMenuItem } from '@/interface/menu'
+import { ButtonSignOut } from './ButtonSignOut'
 
 type Props = {
   items: SideMenuItem[];
@@ -34,7 +35,9 @@ export function UserDropdownMenu({ items }: Props) {
           </Link>
         ))}
         <Separator />
-        <DropdownMenuItem>Logout</DropdownMenuItem>
+        <DropdownMenuItem>
+          <ButtonSignOut />
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
