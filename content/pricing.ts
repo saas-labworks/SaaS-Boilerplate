@@ -50,3 +50,5 @@ export const pricingDetails: PaymentDetails[] = [
     ]
   }
 ]
+
+export const CUSTOMER_PORTAL_LINK = 'https://billing.stripe.com/p/login/test_aEU5ku6NG9WYces000'
