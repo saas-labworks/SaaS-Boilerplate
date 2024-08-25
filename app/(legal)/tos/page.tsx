@@ -1,5 +1,11 @@
+import { Metadata } from 'next'
 import { BasicLayout } from '@/components/layouts'
 import { Separator } from '@/components/ui/separator'
+
+export const metadata: Metadata = {
+  title: 'AI Policy',
+  description: 'This Agreement governs your use of this service'
+}
 
 export default function TermsAndConditionsPage() {
   return (

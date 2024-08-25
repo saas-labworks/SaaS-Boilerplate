@@ -1,5 +1,10 @@
+import { Metadata } from 'next'
 import { BasicLayout } from '@/components/layouts'
 import { Separator } from '@/components/ui/separator'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy'
+}
 
 export default function PrivacyPolicyPage() {
   return (
