@@ -1,6 +1,8 @@
 /* eslint-disable indent */
 import Image from 'next/image'
 import { Separator } from '@/components/ui/separator'
+import { BasicHeader } from '@/components/header'
+import { BasicFooter } from '@/components/footer'
 
 // Define the structure of a changelog entry
 interface ChangelogEntry {
@@ -49,11 +51,12 @@ const changelogData: ChangelogEntry[] = [
 export default function Component() {
   return (
     <>
+      <BasicHeader />
       <div className='space-y-4 flex flex-col items-center justify-center py-14 bg-gray-100'>
         <h1 className='text-3xl font-bold'>Changelog</h1>
         <p>All the latest updates, improvements, and fixes to v0.</p>
       </div>
-      <div className='container max-w-[75ch] mx-auto mt-24'>
+      <div className='container max-w-[75ch] mx-auto my-24'>
         <div className='space-y-8'>
           {changelogData.map((changes, index) => (
             <section key={index}>
@@ -103,6 +106,7 @@ export default function Component() {
           </div>
         </div>
       </div>
+      <BasicFooter />
     </>
 
   )
