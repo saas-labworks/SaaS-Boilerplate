@@ -10,7 +10,7 @@ type Faq = {
   content: string;
 }
 
-const faqs: Faq[] = [
+export const faqs: Faq[] = [
   {
     title: 'What do I get exactly?',
     content: '1/ The NextJS starter with all the boilerplate code you need to run an online business: a payment system, a database, login, a blog, UI components, and much more. The repo is available in: - Javascript and Typescript - /app router and /pages router.'
