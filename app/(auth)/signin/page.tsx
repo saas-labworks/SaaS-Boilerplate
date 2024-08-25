@@ -10,8 +10,15 @@ import { Label } from '@/components/ui/label'
 import { AuthError } from 'next-auth'
 import { redirect, RedirectType } from 'next/navigation'
 import { Separator } from '@/components/ui/separator'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
-export default async function SingInPage() {
+type Props = {
+  searchParams: {
+    error?: string
+  }
+}
+
+export default async function SingInPage({ searchParams }: Props) {
   const session = await auth()
   if (!session) {
     console.log('User no logged. Continue in this page')
@@ -36,7 +43,8 @@ export default async function SingInPage() {
   const siginInMagicLink = async (formData: FormData) => {
     'use server'
     try {
-      await signIn('nodemailer', formData)
+      // await signIn('nodemailer', formData)
+      await signIn('resend', formData)
     } catch (error) {
       if (error instanceof AuthError) {
         return redirect(`$/signin?error=${error.type}`)
@@ -47,6 +55,14 @@ export default async function SingInPage() {
 
   return (
     <div className='w-full h-screen grid place-content-center'>
+      {searchParams.error && (
+        <Alert variant='destructive' className='mb-4'>
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>
+            {searchParams.error}
+          </AlertDescription>
+        </Alert>
+      )}
       <Card className='mx-auto max-w-sm'>
         <CardHeader>
           <CardTitle className='text-2xl'>Login</CardTitle>
