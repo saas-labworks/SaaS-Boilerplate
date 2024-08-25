@@ -2,7 +2,7 @@ import Link from 'next/link'
 import {
   CircleAlert, CircleDollarSign,
   CircleUser, CreditCard, LogOut,
-  ScrollText, User
+  ScrollText, UserCircle
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
@@ -14,7 +14,7 @@ import { ButtonSignOut } from '../dashboard/ButtonSignOut'
 
 const items = [
   {
-    icon: <User strokeWidth={1.5} />,
+    icon: <UserCircle strokeWidth={1.5} />,
     text: 'Profile',
     link: '/profile'
   },
@@ -50,8 +50,8 @@ export function UserDropdown() {
           <span className='sr-only'>Toggle user menu</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align='end' className='min-w-[200px]'>
-        <div className='!min-w-[200px]'>
+      <DropdownMenuContent align='end' className='min-w-[280px]'>
+        <div className='w-full p-2'>
           <p className='text-sm font-semibold'>Carlos Manuel González Peña</p>
           <p className='text-sm text-muted-foreground'>carlos@gmail.com</p>
         </div>
@@ -68,7 +68,7 @@ export function UserDropdown() {
           </div>
         ))}
         <Separator className='my-2' />
-        <DropdownMenuItem>
+        <DropdownMenuItem className='flex gap-2'>
           <LogOut />
           <ButtonSignOut />
         </DropdownMenuItem>
