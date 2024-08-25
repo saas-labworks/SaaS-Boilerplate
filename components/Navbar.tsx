@@ -21,7 +21,7 @@ export function Navbar() {
         />
       </div>
 
-      <div className='hidden md:flex w-full justify-center'>
+      <div className='hidden md:flex w-full justify-end mr-6'>
         <DesktopNavbar items={navbarItems} />
       </div>
 
