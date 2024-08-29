@@ -43,8 +43,7 @@ export default async function SingInPage({ searchParams }: Props) {
   const siginInMagicLink = async (formData: FormData) => {
     'use server'
     try {
-      // await signIn('nodemailer', formData)
-      await signIn('resend', formData)
+      await signIn('nodemailer', formData)
     } catch (error) {
       if (error instanceof AuthError) {
         return redirect(`$/signin?error=${error.type}`)

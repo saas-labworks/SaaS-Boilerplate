@@ -6,7 +6,14 @@ export default {
   providers: [
     Google,
     Nodemailer({
-      server: process.env.EMAIL_SERVER,
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD
+        }
+      },
       from: process.env.EMAIL_FROM
     })
   ],
