@@ -1,4 +1,4 @@
-import type { NextAuthConfig /* User */ } from 'next-auth'
+import type { NextAuthConfig } from 'next-auth'
 import Google from 'next-auth/providers/google'
 import Nodemailer from 'next-auth/providers/nodemailer'
 
@@ -36,5 +36,9 @@ export default {
   },
   pages: {
     signIn: '/signin'
+    // error: '/error',
+    // newUser: '/new-user',
+    // signOut: '/signOut',
+    // verifyRequest: '/verify-request'
   }
 } satisfies NextAuthConfig
