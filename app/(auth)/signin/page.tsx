@@ -20,9 +20,6 @@ type Props = {
 
 export default async function SingInPage({ searchParams }: Props) {
   const session = await auth()
-  if (!session) {
-    console.log('User no logged. Continue in this page')
-  }
   if (session?.user) {
     console.log('User logged. Redirect to dashboard')
     return redirect('/dashboard/profile', RedirectType.replace)

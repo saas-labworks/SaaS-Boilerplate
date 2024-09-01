@@ -14,7 +14,7 @@ type Props = {
 export default async function AdminDashboardPage({ children }: Props) {
   const session = await auth()
   if (!session?.user) {
-    return redirect(AppRoutes.auth.singin)
+    return redirect(AppRoutes.auth.signIn)
   }
 
   return (
