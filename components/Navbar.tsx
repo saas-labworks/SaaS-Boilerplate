@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { buttonVariants } from './ui/button'
 import { DesktopNavbar, MobileNavbar } from './landing/header'
 import { navbarItems } from '@/content'
+import { ThemeModeToggle } from './theme'
 
 export function Navbar() {
   return (
@@ -21,11 +22,15 @@ export function Navbar() {
         />
       </div>
 
-      <div className='hidden md:flex w-full justify-end mr-6'>
+      <div className='hidden md:flex w-full justify-end'>
         <DesktopNavbar items={navbarItems} />
       </div>
 
-      <div>
+      <div className='flex items-center'>
+        <div className='px-3 pl-6'>
+          <ThemeModeToggle />
+        </div>
+
         <Link href='/signin' className={buttonVariants({ variant: 'default' })}>Start building</Link>
       </div>
     </nav>

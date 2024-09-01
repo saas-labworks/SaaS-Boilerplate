@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import './globals.css'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { globalConfig } from '@/global.config'
+import { ThemeProvider } from '../components/theme'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -29,7 +30,14 @@ export default function RootLayout({
       )}
       >
         <TooltipProvider>
-          {children}
+          <ThemeProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
         </TooltipProvider>
       </body>
     </html>
