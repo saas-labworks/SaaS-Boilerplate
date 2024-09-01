@@ -2,14 +2,21 @@ import { ReactNode } from 'react'
 import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { SideDesktopMenu, SideMobileMenu } from '@/components/dashboard'
-import { profileSideMenuContent } from '@/content'
+import { AppRoutes, profileSideMenuContent } from '@/content'
 import { UserDropdown } from '@/components/UserDropdown'
+import { auth } from '@/lib/auth'
+import { redirect } from 'next/navigation'
 
 type Props = {
   children: ReactNode
 }
 
-export default function AdminDashboardPage({ children }: Props) {
+export default async function AdminDashboardPage({ children }: Props) {
+  const session = await auth()
+  if (!session?.user) {
+    return redirect(AppRoutes.auth.singin)
+  }
+
   return (
     <div className='grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]'>
       {/* Desktop Side Menu */}

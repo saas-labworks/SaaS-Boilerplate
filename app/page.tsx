@@ -8,6 +8,7 @@ import { Cta } from '@/components/landing/CTA'
 import { TestimonialsGrid } from '@/components/landing/testimonials'
 import { Features, WithAndWithout } from '@/components/landing/Features'
 import { DetailedFooter } from '@/components/footer'
+import '@/lib/config/env'
 
 export default function Home() {
   return (

@@ -1,18 +1,27 @@
 version: '3.8'
+
 services:
-  mongodb:
-    image: mongo:7.0
-    container_name: mongodb
-    restart: unless-stopped
+  saaslab_db_image:
+    container_name: saaslab_db_image
+    image: postgres:15.7
+    restart: always
+
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=password
-      - MONGO_INITDB_DATABASE=saas-boilerplate
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    
     ports:
-      - '27017:27017'
+      - '3874:5432'
+    
     volumes:
-      - saas-boilderplate-db:/data/db
+      - saas_db_volume:/var/lib/postgresql/data
+    
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
-  saas-boilderplate-db:
+  saas_db_volume:
     driver: local

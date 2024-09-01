@@ -1,4 +1,6 @@
 import { createTransport } from 'nodemailer'
+import { AppConstants } from '../config'
+import { globalConfig } from '@/global.config'
 
 export interface SendEmailProps {
   to: string;
@@ -8,16 +10,11 @@ export interface SendEmailProps {
 
 export async function sendEmail({ to, subject, html }: SendEmailProps) {
   const transport = createTransport({
-    host: process.env.EMAIL_SERVER_HOST,
-    port: +(process.env.EMAIL_SERVER_PORT ?? '0'),
-    auth: {
-      user: process.env.EMAIL_SERVER_USER,
-      pass: process.env.EMAIL_SERVER_PASSWORD
-    }
+    url: AppConstants.EmailServer
   })
 
   const result = await transport.sendMail({
-    from: process.env.EMAIL_FROM,
+    from: globalConfig.mail.from,
     to,
     subject,
     html
