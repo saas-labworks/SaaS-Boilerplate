@@ -1,6 +1,6 @@
 export const AppRoutes = {
   auth: {
-    singin: '/signin',
+    signIn: '/signin',
     verifySingin: '/verify-signin'
   },
   home: '/',
