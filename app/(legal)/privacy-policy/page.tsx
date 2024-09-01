@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { BasicLayout } from '@/components/layouts'
 import { Separator } from '@/components/ui/separator'
+import { globalConfig } from '@/global.config'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy'
@@ -15,7 +16,7 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2 className='text-2xl font-semibold mb-3'>1. Acceptance of Terms</h2>
           <p>
-            By accessing or using the SaaS Boilerplate service, you agree to be bound by these Terms and Conditions.
+            By accessing or using the {globalConfig.app.name} service, you agree to be bound by these Terms and Conditions.
             If you disagree with any part of the terms, you may not access the service.
           </p>
         </section>
@@ -37,7 +38,7 @@ export default function PrivacyPolicyPage() {
           <h2 className='text-2xl font-semibold mb-3'>4. Intellectual Property</h2>
           <p>
             The service and its original content, features, and functionality are and will remain the exclusive
-            property of SaaS Boilerplate and its licensors.
+            property of {globalConfig.app.name} and its licensors.
           </p>
         </section>
         <section>
@@ -50,7 +51,7 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2 className='text-2xl font-semibold mb-3'>6. Limitation of Liability</h2>
           <p>
-            In no event shall SaaS Boilerplate, nor its directors, employees, partners, agents, suppliers, or
+            In no event shall {globalConfig.app.name}, nor its directors, employees, partners, agents, suppliers, or
             affiliates, be liable for any indirect, incidental, special, consequential or punitive damages.
           </p>
         </section>

@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import './globals.css'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { globalConfig } from '@/global.config'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -11,8 +12,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'SaaS Boilerplate',
-  description: 'SaaS Boilerplate to build awesome products'
+  title: globalConfig.app.name,
+  description: `${globalConfig.app.name} to build awesome products`
 }
 
 export default function RootLayout({
