@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   CircleAlert, CircleDollarSign,
   CircleUser, CreditCard, LogOut,
@@ -11,6 +12,8 @@ import {
   DropdownMenuItem, DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { ButtonSignOut } from '../dashboard/ButtonSignOut'
+import { auth } from '@/lib/auth'
+import { redirect } from 'next/navigation'
 
 const items = [
   {
@@ -41,19 +44,28 @@ const items = [
   }
 ]
 
-export function UserDropdown() {
+export async function UserDropdown() {
+  const session = await auth()
+  console.log(session)
+  if (!session?.user) {
+    return redirect('/signin')
+  }
+  const user = session.user
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant='secondary' size='icon' className='rounded-full'>
-          <CircleUser className='h-5 w-5' />
+          {user.image
+            ? (<Image src={user.image} alt={user.name ?? ''} width={32} height={32} />)
+            : (<CircleUser className='h-5 w-5' />)}
           <span className='sr-only'>Toggle user menu</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end' className='min-w-[280px]'>
         <div className='w-full p-2'>
-          <p className='text-sm font-semibold'>Carlos Manuel González Peña</p>
-          <p className='text-sm text-muted-foreground'>carlos@gmail.com</p>
+          <p className='text-sm font-semibold'>{user.name}</p>
+          <p className='text-sm text-muted-foreground'>{user.email}</p>
         </div>
         <Separator className='my-2' />
         {items.map(item => (
@@ -68,9 +80,10 @@ export function UserDropdown() {
           </div>
         ))}
         <Separator className='my-2' />
-        <DropdownMenuItem className='flex gap-2'>
-          <LogOut />
-          <ButtonSignOut />
+        <DropdownMenuItem>
+          <ButtonSignOut
+            icon={<LogOut />}
+          />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

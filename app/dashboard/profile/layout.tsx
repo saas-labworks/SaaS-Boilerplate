@@ -1,8 +1,9 @@
 import { ReactNode } from 'react'
 import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
-import { SideDesktopMenu, SideMobileMenu, UserDropdownMenu } from '@/components/dashboard'
+import { SideDesktopMenu, SideMobileMenu } from '@/components/dashboard'
 import { profileSideMenuContent } from '@/content'
+import { UserDropdown } from '@/components/UserDropdown'
 
 type Props = {
   children: ReactNode
@@ -34,10 +35,7 @@ export default function AdminDashboardPage({ children }: Props) {
               </div>
             </form>
           </div>
-          {/* User Dropdown Menu */}
-          <UserDropdownMenu
-            items={profileSideMenuContent.items}
-          />
+          <UserDropdown />
         </header>
         <main className='flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6'>
           {children}

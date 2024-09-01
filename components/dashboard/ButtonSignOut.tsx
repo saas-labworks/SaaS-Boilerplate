@@ -1,14 +1,21 @@
 'use client'
-// import { signOut } from '@/lib/auth'
 import { signOut } from 'next-auth/react'
+import { ReactNode } from 'react'
 
-export function ButtonSignOut() {
+type Props = {
+  icon?: ReactNode
+}
+
+export function ButtonSignOut({ icon }: Props) {
   return (
     <button
+      className='flex gap-2'
       onClick={() => signOut({
         redirect: true, callbackUrl: '/signin'
       })}
-    > Logout
+    >
+      {icon}
+      Logout
     </button>
   )
 }

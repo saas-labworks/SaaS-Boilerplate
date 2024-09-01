@@ -7,7 +7,7 @@ import { ThemeModeToggle } from './theme'
 
 export function Navbar() {
   return (
-    <nav className='w-full flex justify-between p-4 fixed backdrop-blur-sm'>
+    <nav className='w-full flex justify-between p-4 fixed z-[9999] backdrop-blur-sm'>
 
       <div className='md:hidden'>
         <MobileNavbar
