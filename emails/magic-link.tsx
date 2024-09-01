@@ -6,13 +6,13 @@ import {
   Section, Text
 } from '@react-email/components'
 
-interface RaycastMagicLinkEmailProps {
+export interface MagicLinkEmailProps {
   magicLink?: string;
 }
 
-export const RaycastMagicLinkEmail = ({
+export const MagicLinkEmail = ({
   magicLink
-}: RaycastMagicLinkEmailProps) => (
+}: MagicLinkEmailProps) => (
   <Html>
     <Head />
     <Preview>Log in with this magic link.</Preview>
@@ -43,11 +43,11 @@ export const RaycastMagicLinkEmail = ({
   </Html>
 )
 
-RaycastMagicLinkEmail.PreviewProps = {
+MagicLinkEmail.PreviewProps = {
   magicLink: 'http://localhost:3000/dashboard/profile'
-} as RaycastMagicLinkEmailProps
+} as MagicLinkEmailProps
 
-export default RaycastMagicLinkEmail
+export default MagicLinkEmail
 
 const main = {
   backgroundColor: '#ffffff',
@@ -58,7 +58,7 @@ const main = {
 const container = {
   margin: '0 auto',
   padding: '20px 25px 48px',
-  backgroundImage: 'url("/assets/raycast-bg.png")',
+  backgroundImage: 'url("/assets/-bg.png")',
   backgroundPosition: 'bottom',
   backgroundRepeat: 'no-repeat, no-repeat'
 }
