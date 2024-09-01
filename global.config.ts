@@ -3,6 +3,7 @@ export const globalConfig = {
     from: 'support@saaslab.site'
   },
   app: {
-    name: 'SaaS Boilerplate'
+    name: 'SaaS Boilerplate',
+    host: 'https://saaslab.site'
   }
 }

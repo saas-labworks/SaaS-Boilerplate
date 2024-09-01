@@ -42,10 +42,10 @@ export default {
     }
   },
   pages: {
-    signIn: '/signin'
+    signIn: '/signin',
+    verifyRequest: '/verify-request'
     // error: '/error',
     // newUser: '/new-user',
     // signOut: '/signOut',
-    // verifyRequest: '/verify-request'
   }
 } satisfies NextAuthConfig
