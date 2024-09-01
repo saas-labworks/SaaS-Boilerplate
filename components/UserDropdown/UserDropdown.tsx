@@ -46,7 +46,6 @@ const items = [
 
 export async function UserDropdown() {
   const session = await auth()
-  console.log(session)
   if (!session?.user) {
     return redirect('/signin')
   }

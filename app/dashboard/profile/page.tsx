@@ -1,13 +1,47 @@
 import { ButtonCustomerPortal } from '@/components/payments/ButtonCustomerPortal'
-import { buttonVariants } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { auth } from '@/lib/auth'
+import { getUser, updateUser } from '@/lib/data-access'
 
-export default function AdminDashboardPage() {
+export default async function ProfileDashboardPage() {
+  const session = await auth()
+  const user = await getUser(session!.user!.id!)
+  // TODO: manage formData in a client component
+
   return (
-    <main className='flex flex-col p-4 lg:p-6'>
+    <main className='grid grid-cols-1 md:grid-cols-2 gap-8 p-4 lg:p-6'>
       {/* TODO: Maybe show plans here! */}
-      <div className='w-40'>
+      <form
+        action={async (formData: FormData) => {
+          'use server'
+          const name = formData.get('name') as string | null
+          if (!name || name === user!.name) return
+
+          await updateUser(user!.id, { name })
+        }}
+        className='flex flex-col gap-2'
+      >
+        <Label htmlFor='name'>Name</Label>
+        <Input
+          type='text'
+          name='name'
+          placeholder={user?.name ?? 'John Doe'}
+        />
+
+        <Button
+          type='submit'
+          className='max-w-min'
+        >
+          Save Changes
+        </Button>
+      </form>
+
+      <div className='flex flex-col gap-4'>
+        <Label>See your billing details</Label>
         <ButtonCustomerPortal
-          className={buttonVariants({ variant: 'default', className: 'w-full' })}
+          className={buttonVariants({ variant: 'default', className: 'max-w-min' })}
         />
       </div>
     </main>
