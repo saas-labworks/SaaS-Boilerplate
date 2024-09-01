@@ -7,6 +7,7 @@ import {
   NavigationMenuItem,
   NavigationMenuLink
 } from '@/components/ui/navigation-menu'
+import { buttonVariants } from '@/components/ui/button'
 
 type Props = {
   button: ReactNode;
@@ -23,10 +24,13 @@ export function MobileNavbar({ button, items }: Props) {
         <NavigationMenu className='mt-16'>
           <NavigationMenuList className='flex flex-col items-start gap-8'>
             {items.map((item, key) => (
-              <NavigationMenuItem
-                key={key} asChild
-              >
-                <NavigationMenuLink href={item.href}>{item.name}</NavigationMenuLink>
+              <NavigationMenuItem key={key} asChild>
+                <NavigationMenuLink
+                  href={item.href}
+                  className={buttonVariants({ variant: 'link' })}
+                >
+                  {item.name}
+                </NavigationMenuLink>
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>

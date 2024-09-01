@@ -1,3 +1,4 @@
+import { buttonVariants } from '@/components/ui/button'
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -16,7 +17,12 @@ export function DesktopNavbar({ items }: Props) {
       <NavigationMenuList className='flex gap-6'>
         {items.map((item, key) => (
           <NavigationMenuItem key={key} asChild>
-            <NavigationMenuLink href={item.href}>{item.name}</NavigationMenuLink>
+            <NavigationMenuLink
+              href={item.href}
+              className={buttonVariants({ variant: 'link' })}
+            >
+              {item.name}
+            </NavigationMenuLink>
           </NavigationMenuItem>
         ))}
       </NavigationMenuList>
