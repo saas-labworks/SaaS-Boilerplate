@@ -6,7 +6,11 @@ import { PaymentCard } from './payments/PaymentCard'
 import { pricingDetails } from '@/content/pricing'
 import { cn } from '@/lib/utils'
 
-export function Pricing() {
+type Props = {
+  defaultEmail?: string;
+}
+
+export function Pricing({ defaultEmail }: Props) {
   const [isYearly, setIsYearly] = useState(false)
 
   return (
@@ -47,6 +51,7 @@ export function Pricing() {
               price={pricing.price}
               isYearly={isYearly}
               features={pricing.features}
+              metadata={{ defaultEmail }}
             />
           ))}
         </div>

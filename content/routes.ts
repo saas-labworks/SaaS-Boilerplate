@@ -3,7 +3,12 @@ export const AppRoutes = {
     signIn: '/signin',
     verifySingin: '/verify-signin'
   },
-  home: '/',
+
+  landing: {
+    home: '/',
+    pricing: '/pricing'
+  },
+
   dashboard: {
     userProfile: '/dashboard/profile'
   },

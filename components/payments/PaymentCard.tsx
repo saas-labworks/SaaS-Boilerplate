@@ -5,13 +5,17 @@ import { cn } from '@/lib/utils'
 import { PaymentDetails } from '@/interface/pricing'
 
 interface Props extends PaymentDetails {
-  isYearly: boolean
+  isYearly: boolean,
+  metadata?: {
+    defaultEmail?: string;
+  }
 }
 
 export function PaymentCard({
   title, description,
   isYearly, price,
   features,
+  metadata,
   featured = false
 }: Props) {
   const plan = isYearly ? price.yearly : price.monthly
@@ -43,7 +47,7 @@ export function PaymentCard({
         <a
           target='_blank'
           rel='noreferrer'
-          href={plan.buy_url /* + '?prefilled_email=' + session?.user?.email */}
+          href={plan.buy_url + '?prefilled_email=' + metadata?.defaultEmail}
         >
           Get Started
         </a>

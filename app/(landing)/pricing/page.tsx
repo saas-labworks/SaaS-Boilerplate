@@ -1,13 +1,19 @@
 import { Faqs } from '@/components/Faqs'
-import { BasicFooter } from '@/components/footer'
+import { BasicLayout } from '@/components/layouts'
 import { Pricing } from '@/components/Pricing'
+import { auth } from '@/lib/auth'
 
-export default function PaymentPage() {
+export default async function PaymentPage() {
+  const session = await auth()
+
   return (
-    <>
-      <Pricing />
+    <BasicLayout
+      title='Pricing'
+    >
+      <Pricing
+        defaultEmail={session?.user?.email ?? ''}
+      />
       <Faqs />
-      <BasicFooter />
-    </>
+    </BasicLayout>
   )
 }
