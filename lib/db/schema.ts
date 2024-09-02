@@ -14,7 +14,10 @@ export const users = pgTable(
     name: text('name'),
     email: text('email').unique(),
     emailVerified: timestamp('emailVerified', { mode: 'date' }),
-    image: text('image')
+    image: text('image'),
+    customerId: text('customer_id').unique(),
+    hasAccess: boolean('has_access').default(false),
+    planId: text('plan_id')
   }
 )
 
