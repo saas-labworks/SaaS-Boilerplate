@@ -4,6 +4,6 @@ export const globalConfig = {
   },
   app: {
     name: 'SaaS Boilerplate',
-    host: 'https://saaslab.site'
+    host: 'http://localhost:3000'
   }
 }

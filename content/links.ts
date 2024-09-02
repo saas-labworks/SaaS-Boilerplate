@@ -1,3 +1,4 @@
 export const AppLinks = {
-  SignInPage: '/signin'
+  SignInPage: '/signin',
+  Dashboard: '/dashboard/profile'
 }
