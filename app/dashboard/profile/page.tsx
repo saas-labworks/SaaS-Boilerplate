@@ -3,11 +3,11 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { auth } from '@/lib/auth'
-import { getUser, updateUser } from '@/lib/data-access'
+import { getUserById, updateUser } from '@/lib/data-access'
 
 export default async function ProfileDashboardPage() {
   const session = await auth()
-  const user = await getUser(session!.user!.id!)
+  const user = await getUserById(session!.user!.id!)
   // TODO: manage formData in a client component
 
   return (

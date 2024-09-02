@@ -6,6 +6,7 @@ import { AppRoutes, profileSideMenuContent } from '@/content'
 import { UserDropdown } from '@/components/UserDropdown'
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
+import { getUserById } from '@/lib/data-access'
 
 type Props = {
   children: ReactNode
@@ -15,6 +16,12 @@ export default async function AdminDashboardPage({ children }: Props) {
   const session = await auth()
   if (!session?.user) {
     return redirect(AppRoutes.auth.signIn)
+  }
+
+  const user = await getUserById(session.user.id!)
+
+  if (!user?.hasAccess) {
+    return redirect(AppRoutes.landing.pricing)
   }
 
   return (
