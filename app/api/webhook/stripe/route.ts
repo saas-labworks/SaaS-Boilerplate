@@ -1,5 +1,6 @@
 import { AppConstants } from '@/lib/config'
 import { getUserByCustomerId, getUserByEmail, giveAccess, revokeAccess, updateUser } from '@/lib/data-access'
+import { sendCancelledPayment, sendCompletePayment } from '@/lib/email'
 import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
@@ -55,6 +56,7 @@ export async function POST(req: Request) {
         await giveAccess(user.id, priceId)
 
         // TODO: Extra: >>>>> send email to dashboard <<<<
+        await sendCompletePayment({ to: user.email! })
         break
       }
 
@@ -76,6 +78,7 @@ export async function POST(req: Request) {
         // Revoke access to your product
         await revokeAccess(user.id)
         // TODO: Extra: >>>>> send email to dashboard <<<<
+        await sendCancelledPayment({ to: user.email! })
         break
       }
 

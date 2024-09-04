@@ -41,9 +41,8 @@ const PropDefaults: CompletePaymentEmailProps = {
       id: 1,
       Description: (
         <li className='mb-20' key={1}>
-          <strong>Deploy your first project.</strong>{' '}
-          <Link>Connect to Git, choose a template</Link>, or manually deploy a
-          project you've been working on locally.
+          <strong>Deploy your first project faster.</strong>{' '}
+          Simply use own boilerplate for your project and start to build your startup in few days.
         </li>
       )
     },
@@ -51,29 +50,17 @@ const PropDefaults: CompletePaymentEmailProps = {
       id: 2,
       Description: (
         <li className='mb-20' key={2}>
-          <strong>Check your deploy logs.</strong> Find out what's included in
-          your build and watch for errors or failed deploys.{' '}
-          <Link>Learn how to read your deploy logs</Link>.
+          <strong>Principal technologies</strong>
+          Start building with the prinicipal technologies, always priorizing the low cost.
         </li>
       )
     },
     {
       id: 3,
       Description: (
-        <li className='mb-20' key={3}>
-          <strong>Choose an integration.</strong> Quickly discover, connect, and
-          configure the right tools for your project with 150+ integrations to
-          choose from. <Link>Explore the Integrations Hub</Link>.
-        </li>
-      )
-    },
-    {
-      id: 4,
-      Description: (
         <li className='mb-20' key={4}>
-          <strong>Set up a custom domain.</strong> You can register a new domain
-          and buy it through Netlify or assign a domain you already own to your
-          site. <Link>Add a custom domain</Link>.
+          <strong>Awesome CLI.</strong>
+          Do you want to use other tools? No resend? Maybe SES? No problem. The CLI can customize your templates and build your startup with differents options.
         </li>
       )
     }
