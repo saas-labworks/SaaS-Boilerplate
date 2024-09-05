@@ -1,4 +1,4 @@
-import { AppLinks } from '@/content'
+import { AppLinks } from '@/src/content'
 import { globalConfig } from '@/global.config'
 import {
   Body,
