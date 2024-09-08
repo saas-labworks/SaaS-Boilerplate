@@ -37,7 +37,7 @@ export const pricingDetails: PaymentDetails[] = [
       yearly: {
         value: 20, // 240 yearly
         buy_url: 'https://buy.stripe.com/test_dR6aFIdXKd4q2K4149',
-        price_id: 'price_1PneB8CCO85LUEYfJi9opvBZ'
+        price_id: 'price_1PwD5yCCO85LUEYfDZJrK2va'
       }
     },
     featured: false,
