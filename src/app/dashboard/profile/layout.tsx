@@ -19,10 +19,7 @@ export default async function AdminDashboardPage({ children }: Props) {
   }
 
   const user = await getUserById(session.user.id!)
-
-  if (!user?.hasAccess) {
-    return redirect(AppRoutes.landing.pricing)
-  }
+  console.log(user)
 
   return (
     <div className='grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]'>
