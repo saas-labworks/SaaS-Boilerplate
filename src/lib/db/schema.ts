@@ -1,7 +1,8 @@
 import {
   boolean, timestamp,
   pgTable, text,
-  primaryKey, integer
+  primaryKey, integer,
+  serial
 } from 'drizzle-orm/pg-core'
 import type { AdapterAccountType } from 'next-auth/adapters'
 
@@ -14,10 +15,7 @@ export const users = pgTable(
     name: text('name'),
     email: text('email').unique(),
     emailVerified: timestamp('emailVerified', { mode: 'date' }),
-    image: text('image'),
-    customerId: text('customer_id').unique(),
-    hasAccess: boolean('has_access').default(false),
-    planId: text('plan_id')
+    image: text('image')
   }
 )
 
@@ -89,4 +87,29 @@ export const authenticators = pgTable(
       columns: [authenticator.userId, authenticator.credentialID]
     })
   })
+)
+
+export const newsletter = pgTable(
+  'newsletter',
+  {
+    id: serial('id').primaryKey(),
+    email: text('email').notNull().unique(),
+    createdAt: timestamp('createdAt', { mode: 'date' }).$defaultFn(() => new Date())
+  }
+)
+
+export const subscriptions = pgTable(
+  'subscriptions',
+  {
+    id: serial('id').primaryKey(),
+    userId: text('userId')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' })
+      .unique(),
+    stripeSubscriptionId: text('stripeSubscriptionId').notNull(),
+    stripeCustomerId: text('stripeCustomerId').notNull(),
+    stripePriceId: text('stripePriceId').notNull(),
+    stripeCurrentPeriodStart: timestamp('start', { mode: 'date' }).notNull(),
+    stripeCurrentPeriodEnd: timestamp('end', { mode: 'date' }).notNull()
+  }
 )

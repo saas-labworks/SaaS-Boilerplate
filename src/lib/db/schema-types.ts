@@ -1,4 +1,4 @@
-import { authenticators, users, verificationTokens, sessions, accounts } from './schema'
+import { authenticators, users, verificationTokens, sessions, accounts, subscriptions } from './schema'
 
 /**
  * TYPES
@@ -8,9 +8,8 @@ import { authenticators, users, verificationTokens, sessions, accounts } from '.
  * in a component or function.
  */
 export type User = typeof users.$inferSelect
-export type UpdateUser = Pick<Partial<User>, 'name' | 'image' | 'customerId'>
-
 export type Account = typeof accounts.$inferSelect
 export type Session = typeof sessions.$inferSelect
 export type VerificationToken = typeof verificationTokens.$inferSelect
 export type Authenticator = typeof authenticators.$inferSelect
+export type Subscription = typeof subscriptions.$inferSelect
