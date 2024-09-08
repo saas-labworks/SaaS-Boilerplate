@@ -14,6 +14,7 @@ import {
 import { ButtonSignOut } from '../dashboard/ButtonSignOut'
 import { auth } from '@/src/lib/auth'
 import { redirect } from 'next/navigation'
+import { getUserById } from '@/src/lib/data-access'
 
 const items = [
   {
@@ -49,7 +50,7 @@ export async function UserDropdown() {
   if (!session?.user) {
     return redirect('/signin')
   }
-  const user = session.user
+  const user = (await getUserById(session.user.id!))!
 
   return (
     <DropdownMenu>
