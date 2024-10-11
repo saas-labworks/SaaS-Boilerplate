@@ -1,7 +1,8 @@
 'use client'
 import { ReactNode } from 'react'
-import { Button } from './ui/button'
 import { useFormStatus } from 'react-dom'
+import { Loader2Icon } from 'lucide-react'
+import { Button } from './ui/button'
 import { cn } from '../lib/utils'
 
 type Props = {
@@ -19,7 +20,7 @@ export function LoaderFormButton({ className, children }: Props) {
       aria-disabled={pending}
       type='submit'
     >
-      {pending && <div className='loader inline-block' />}
+      {pending && <Loader2Icon className='animate-spin w-4 h-4' />}
       {children}
     </Button>
   )
