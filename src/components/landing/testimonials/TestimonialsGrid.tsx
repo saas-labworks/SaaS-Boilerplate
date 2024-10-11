@@ -1,6 +1,6 @@
 export function TestimonialsGrid() {
   return (
-    <div className='w-full'>
+    <section className='container py-12 md:py-24 lg:py-32'>
       <script
         src='https://widget.senja.io/widget/e6b7febd-25d6-4d68-af73-b4090a48fd2e/platform.js'
         type='text/javascript'
@@ -15,6 +15,6 @@ export function TestimonialsGrid() {
           display: 'block'
         }}
       />
-    </div>
+    </section>
   )
 }
