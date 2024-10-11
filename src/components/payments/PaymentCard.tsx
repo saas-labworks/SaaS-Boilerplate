@@ -3,6 +3,7 @@ import { Card } from '../ui/card'
 import { Button } from '../ui/button'
 import { cn } from '@/src/lib/utils'
 import { PaymentDetails } from '@/src/interface/pricing'
+import { createStripeCheckoutSubscription } from '@/src/lib/use-cases'
 
 interface Props extends PaymentDetails {
   isYearly: boolean,
@@ -43,15 +44,17 @@ export function PaymentCard({
           <span className='text-muted-foreground font-bold'>/month</span>
         </div>
       </div>
-      <Button className='w-full'>
-        <a
-          target='_blank'
-          rel='noreferrer'
-          href={plan.buy_url + '?prefilled_email=' + metadata?.defaultEmail}
-        >
-          Get Started
-        </a>
+
+      <Button
+        className='w-full'
+        onClick={() => createStripeCheckoutSubscription({
+          priceId: plan.price_id,
+          mode: 'subscription'
+        })}
+      >
+        Get Started
       </Button>
+
       <ul className='grid gap-2 text-muted-foreground'>
         {features.map((feature, index) => (
           <li key={index} className='flex items-center gap-2'>
