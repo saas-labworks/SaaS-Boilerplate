@@ -12,7 +12,6 @@ interface Props extends OnePaymentPlansDetails {
 }
 
 export function OnePaymentCard({
-  title, description,
   price,
   features,
   metadata,
@@ -20,26 +19,12 @@ export function OnePaymentCard({
 }: Props) {
   return (
     <Card className={cn('max-w-sm w-full grid gap-6 p-6 sm:p-8', { 'bg-primary text-primary-foreground': featured })}>
-      <div className='grid gap-2'>
-        <h3 className='text-2xl font-bold'>{title}</h3>
-        <p className='text-muted-foreground'>{description}</p>
-      </div>
       <div className='flex items-end gap-2'>
         <span className='text-5xl font-bold'>${price.value}</span>
         <div className='flex flex-col text-xs text-muted-foreground'>
           <span className='text-muted-foreground font-bold'>/forever</span>
         </div>
       </div>
-
-      <Button
-        className='w-full'
-        onClick={() => createStripeCheckout({
-          priceId: price.price_id,
-          mode: 'subscription'
-        })}
-      >
-        Your forever
-      </Button>
 
       <ul className='grid gap-2 text-muted-foreground'>
         {features.map((feature, index) => (
@@ -49,6 +34,20 @@ export function OnePaymentCard({
           </li>
         ))}
       </ul>
+
+      <div>
+        <Button
+          className='w-full'
+          onClick={() => createStripeCheckout({
+            priceId: price.price_id,
+            mode: 'subscription'
+          })}
+        >
+          Your forever
+        </Button>
+        <p className='text-sm mt-2 text-center'>One-time payment, then <span className='underline'>it's yours forever</span></p>
+      </div>
+
     </Card>
   )
 }

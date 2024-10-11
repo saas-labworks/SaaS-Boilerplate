@@ -5,6 +5,7 @@ import { AppConstants } from '../config'
 import { stripe } from '../stripe'
 import { actionClient } from '@/src/lib/safe-action'
 import { auth } from '../auth'
+import { AppLinks } from '@/src/content'
 
 const schema = z.object({
   priceId: z.string().startsWith('price_'),
@@ -15,8 +16,12 @@ export const createStripeCheckout = actionClient
   .schema(schema)
   .action(async ({ parsedInput: { priceId, mode } }) => {
     const userSession = await auth()
-    const email = userSession?.user?.email!
-    const userId = userSession?.user?.id!
+    if (!userSession?.user) {
+      return redirect(AppLinks.SignInPage)
+    }
+
+    const email = userSession.user.email!
+    const userId = userSession.user.id!
 
     const session = await stripe.checkout.sessions.create({
       success_url: `${AppConstants.HostUrl}/success`,
