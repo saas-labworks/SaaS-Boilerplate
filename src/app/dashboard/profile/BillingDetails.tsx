@@ -3,7 +3,7 @@ import { Badge } from '@/src/components/ui/badge'
 import { buttonVariants } from '@/src/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/src/components/ui/card'
 import { Progress } from '@/src/components/ui/progress'
-import { pricingDetails } from '@/src/content'
+import { subscriptionPlansDetails } from '@/src/content'
 import { Subscription, User } from '@/src/lib/db'
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 }
 
 export async function BillingDetails({ user, subscription }: Props) {
-  const subsData = pricingDetails.find(p => [
+  const subsData = subscriptionPlansDetails.find(p => [
     p.price.monthly.price_id,
     p.price.yearly.price_id
   ].includes(subscription!.stripePriceId))

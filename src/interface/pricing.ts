@@ -1,4 +1,4 @@
-export interface PaymentDetails {
+export interface SubscriptionPlansDetails {
   title: string
   description: string
   price: {
@@ -12,6 +12,21 @@ export interface PaymentDetails {
       buy_url: string
       price_id: string
     }
+  },
+  featured?: boolean,
+  features: {
+    text: string;
+    included: boolean
+  }[]
+}
+
+export interface OnePaymentPlansDetails {
+  title: string
+  description: string
+  price: {
+    value: number
+    buy_url: string
+    price_id: string
   },
   featured?: boolean,
   features: {

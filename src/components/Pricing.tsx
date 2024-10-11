@@ -2,15 +2,23 @@
 
 import { useState } from 'react'
 import { Switch } from '@/src/components/ui/switch'
-import { PaymentCard } from './payments/PaymentCard'
-import { pricingDetails } from '@/src/content/pricing'
+import { SubscriptionPaymentCard } from './payments/SubscriptionPaymentCard'
+import { subscriptionPlansDetails, onePaymentPlansDetails } from '@/src/content/pricing'
 import { cn } from '@/src/lib/utils'
+import { OnePaymentCard } from './payments/OnePaymentCard'
 
 type Props = {
   defaultEmail?: string;
 }
 
 export function Pricing({ defaultEmail }: Props) {
+  return (
+    // <SubscriptionPricing defaultEmail={defaultEmail} />
+    <OnePaymentPricing defaultEmail={defaultEmail} />
+  )
+}
+
+export function SubscriptionPricing({ defaultEmail }: Props) {
   const [isYearly, setIsYearly] = useState(false)
 
   return (
@@ -43,13 +51,41 @@ export function Pricing({ defaultEmail }: Props) {
           <span className='text-sm font-medium'>Yearly</span>
         </div>
         <div className='flex flex-wrap justify-center gap-6'>
-          {pricingDetails.map((pricing, index) => (
-            <PaymentCard
+          {subscriptionPlansDetails.map((pricing, index) => (
+            <SubscriptionPaymentCard
               key={index}
               title={pricing.title}
               description={pricing.description}
               price={pricing.price}
               isYearly={isYearly}
+              features={pricing.features}
+              metadata={{ defaultEmail }}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export function OnePaymentPricing({ defaultEmail }: Props) {
+  return (
+    <section id='pricing' className='w-full py-12 md:py-24 lg:py-32 dark:bg-muted bg-background'>
+      <div className='container grid gap-8 px-4 md:px-6'>
+        <div className='grid gap-4 text-center'>
+          <h2 className='text-3xl font-bold tracking-tighter md:text-4xl'>Pricing</h2>
+          <p className='max-w-[600px] mx-auto text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
+            Choose the plan that fits your needs.
+          </p>
+        </div>
+
+        <div className='flex flex-wrap justify-center gap-6'>
+          {onePaymentPlansDetails.map((pricing, index) => (
+            <OnePaymentCard
+              key={index}
+              title={pricing.title}
+              description={pricing.description}
+              price={pricing.price}
               features={pricing.features}
               metadata={{ defaultEmail }}
             />

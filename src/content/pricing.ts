@@ -1,6 +1,6 @@
-import { PaymentDetails } from '@/src/interface/pricing'
+import { OnePaymentPlansDetails, SubscriptionPlansDetails } from '@/src/interface/pricing'
 
-export const pricingDetails: PaymentDetails[] = [
+export const subscriptionPlansDetails: SubscriptionPlansDetails[] = [
   {
     title: 'Starter',
     description: 'Perfect for individuals and small teams.',
@@ -39,6 +39,43 @@ export const pricingDetails: PaymentDetails[] = [
         buy_url: 'https://buy.stripe.com/test_dR6aFIdXKd4q2K4149',
         price_id: 'price_1PwD5yCCO85LUEYfDZJrK2va'
       }
+    },
+    featured: false,
+    features: [
+      { text: '5 users', included: true },
+      { text: '50 GB storage', included: true },
+      { text: 'Advanced analytics', included: true },
+      { text: 'Custom reports', included: true },
+      { text: 'Custom Integrations', included: true }
+    ]
+  }
+]
+
+export const onePaymentPlansDetails: OnePaymentPlansDetails[] = [
+  {
+    title: 'Basic',
+    description: 'Pay one time, your forever',
+    price: {
+      value: 42,
+      buy_url: 'https://buy.stripe.com/test_fZe29c6vi5BY5Wg8wz',
+      price_id: 'price_1PnKOZCCO85LUEYfbtHG4qxg'
+    },
+    featured: false,
+    features: [
+      { text: '1 user', included: true },
+      { text: '5 GB storage', included: true },
+      { text: 'Basic analytics', included: true },
+      { text: 'Custom Support', included: true },
+      { text: 'Custom Integrations', included: true }
+    ]
+  },
+  {
+    title: 'Pro',
+    description: 'Your forever and recive future updateds',
+    price: {
+      value: 50,
+      buy_url: 'https://buy.stripe.com/test_6oEg024na1lI4SceUY',
+      price_id: 'price_1Pne2YCCO85LUEYfAzWIAHLS'
     },
     featured: false,
     features: [
