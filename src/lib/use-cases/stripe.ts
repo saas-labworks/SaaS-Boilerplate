@@ -11,7 +11,7 @@ const schema = z.object({
   mode: z.enum(['subscription', 'payment'])
 })
 
-export const createStripeCheckoutSubscription = actionClient
+export const createStripeCheckout = actionClient
   .schema(schema)
   .action(async ({ parsedInput: { priceId, mode } }) => {
     const userSession = await auth()
@@ -19,8 +19,8 @@ export const createStripeCheckoutSubscription = actionClient
     const userId = userSession?.user?.id!
 
     const session = await stripe.checkout.sessions.create({
-      success_url: `${AppConstants.HostName}/success`,
-      cancel_url: `${AppConstants.HostName}/cancel`,
+      success_url: `${AppConstants.HostUrl}/success`,
+      cancel_url: `${AppConstants.HostUrl}/cancel`,
       payment_method_types: ['card'],
       customer_email: email ?? undefined,
       mode,

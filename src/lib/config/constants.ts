@@ -6,5 +6,5 @@ export const AppConstants = {
   EmailServer: process.env.EMAIL_SERVER,
   StripeSecretKey: process.env.STRIPE_SECRET_KEY,
   StripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
-  HostName: process.env.HOST_NAME
+  HostUrl: process.env.HOST_URL
 }

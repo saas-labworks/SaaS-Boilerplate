@@ -3,7 +3,7 @@ import { Card } from '../ui/card'
 import { Button } from '../ui/button'
 import { cn } from '@/src/lib/utils'
 import { PaymentDetails } from '@/src/interface/pricing'
-import { createStripeCheckoutSubscription } from '@/src/lib/use-cases'
+import { createStripeCheckout } from '@/src/lib/use-cases'
 
 interface Props extends PaymentDetails {
   isYearly: boolean,
@@ -47,7 +47,7 @@ export function PaymentCard({
 
       <Button
         className='w-full'
-        onClick={() => createStripeCheckoutSubscription({
+        onClick={() => createStripeCheckout({
           priceId: plan.price_id,
           mode: 'subscription'
         })}
