@@ -50,7 +50,7 @@ export async function UserDropdown() {
   if (!session?.user) {
     return redirect('/signin')
   }
-  const user = (await getUserById(session.user.id!))!
+  const user = (await getUserById(session.user.id!))! ?? {}
 
   return (
     <DropdownMenu>

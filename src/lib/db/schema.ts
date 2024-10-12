@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm'
 import {
   boolean, timestamp,
   pgTable, text,
@@ -99,7 +100,7 @@ export const newsletter = pgTable(
 )
 
 export const subscriptions = pgTable(
-  'subscriptions',
+  'subscription',
   {
     id: serial('id').primaryKey(),
     userId: text('userId')
@@ -113,3 +114,133 @@ export const subscriptions = pgTable(
     stripeCurrentPeriodEnd: timestamp('end', { mode: 'date' }).notNull()
   }
 )
+
+export const currencies = pgTable(
+  'currency',
+  {
+    id: serial('id').primaryKey(),
+    userId: text('userId')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    name: text('name').notNull(),
+    symbol: text('symbol').notNull(),
+    code: text('code').notNull()
+  }
+)
+
+export const categories = pgTable(
+  'category',
+  {
+    id: serial('id').primaryKey(),
+    userId: text('userId')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    name: text('name').notNull(),
+    parentCategoryId: integer('parentCategoryId')
+  }
+)
+
+export const categoryRelations = relations(
+  categories,
+  ({ one }) => ({
+    parentCategory: one(categories, {
+      fields: [categories.parentCategoryId],
+      references: [categories.id]
+    })
+  })
+)
+
+// export const budgets = pgTable(
+//   'budget',
+//   {
+//     id: serial('id').primaryKey(),
+//     userId: text('user_id')
+//       .notNull()
+//       .references(() => users.id, { onDelete: 'cascade' }),
+//     currencyId: serial('currency_id')
+//       .notNull()
+//       .references(() => currencies.id),
+//     amount: integer('amount').notNull(),
+//     category: serial('category_id')
+//       .notNull()
+//       .references(() => categories.id, { onDelete: 'restrict' }),
+//     startDate: timestamp('start_date', { mode: 'date' }).notNull(),
+//     endDate: timestamp('end_date', { mode: 'date' }).notNull()
+//   }
+// )
+
+// export const moneyAccounts = pgTable(
+//   'money_account',
+//   {
+//     id: serial('id').primaryKey(),
+//     userId: text('user_id')
+//       .notNull()
+//       .references(() => users.id, { onDelete: 'restrict' }),
+//     name: text('name').notNull(),
+//     description: text('description'),
+//     currencyId: serial('currency_id')
+//       .notNull()
+//       .references(() => currencies.id),
+//     balance: integer('balance').notNull().default(0)
+//   }
+// )
+
+// export const expenses = pgTable(
+//   'expenses',
+//   {
+//     id: serial('id').primaryKey(),
+//     userId: text('userId')
+//       .notNull()
+//       .references(() => users.id, { onDelete: 'restrict' }),
+//     currencyId: serial('currency_id')
+//       .notNull()
+//       .references(() => currencies.id),
+//     moneyAccountId: serial('money_account_id')
+//       .notNull()
+//       .references(() => moneyAccounts.id, { onDelete: 'restrict' }),
+//     amount: integer('amount').notNull(),
+//     category: serial('category_id')
+//       .notNull()
+//       .references(() => categories.id, { onDelete: 'restrict' }),
+//     date: timestamp('date', { mode: 'date' }).notNull(),
+//     description: text('description')
+//   }
+// )
+
+// export const incomes = pgTable(
+//   'income',
+//   {
+//     id: serial('id').primaryKey(),
+//     userId: text('user_id')
+//       .notNull()
+//       .references(() => users.id, { onDelete: 'cascade' }),
+//     currencyId: serial('currency_id')
+//       .notNull()
+//       .references(() => currencies.id),
+//     amount: integer('amount').notNull(),
+//     category: text('category'),
+//     date: timestamp('date', { mode: 'date' }).notNull(),
+//     description: text('description'),
+//     createdAt: timestamp('created_at', { mode: 'date' }).$defaultFn(() => new Date())
+//   }
+// )
+
+// export const transferences = pgTable(
+//   'transference',
+//   {
+//     id: serial('id').primaryKey(),
+//     userId: text('user_id')
+//       .notNull()
+//       .references(() => users.id, { onDelete: 'cascade' }),
+//     fromCurrencyId: serial('from_currency_id')
+//       .notNull()
+//       .references(() => currencies.id),
+//     toCurrencyId: serial('to_currency_id')
+//       .notNull()
+//       .references(() => currencies.id),
+//     amount: integer('amount').notNull(),
+//     date: timestamp('date', { mode: 'date' }).notNull(),
+//     description: text('description'),
+//     createdAt: timestamp('created_at', { mode: 'date' }).$defaultFn(() => new Date())
+//   }
+// )

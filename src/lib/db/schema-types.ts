@@ -1,4 +1,9 @@
-import { authenticators, users, verificationTokens, sessions, accounts, subscriptions } from './schema'
+import {
+  authenticators, users, verificationTokens, sessions,
+  accounts, subscriptions, currencies, categories
+  // budgets, moneyAccounts, expenses, incomes,
+  // transferences
+} from './schema'
 
 /**
  * TYPES
@@ -13,3 +18,11 @@ export type Session = typeof sessions.$inferSelect
 export type VerificationToken = typeof verificationTokens.$inferSelect
 export type Authenticator = typeof authenticators.$inferSelect
 export type Subscription = typeof subscriptions.$inferSelect
+
+export type Currency = typeof currencies.$inferSelect
+export type Category = typeof categories.$inferInsert
+// export type Budget = typeof budgets.$inferInsert
+// export type MoneyAccount = typeof moneyAccounts.$inferInsert
+// export type Expense = typeof expenses.$inferInsert
+// export type Income = typeof incomes.$inferInsert
+// export type Transference = typeof transferences.$inferInsert
