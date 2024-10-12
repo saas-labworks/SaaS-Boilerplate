@@ -22,6 +22,34 @@
       "when": 1725740898486,
       "tag": "0002_abandoned_green_goblin",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1728760481341,
+      "tag": "0003_true_cobalt_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1728765082885,
+      "tag": "0004_huge_dragon_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1728766202749,
+      "tag": "0005_unknown_rhodey",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1728766391603,
+      "tag": "0006_nosy_retro_girl",
+      "breakpoints": true
     }
   ]
 }

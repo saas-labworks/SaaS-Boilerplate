@@ -1,0 +1,1 @@
+ALTER TABLE "currency" ADD COLUMN "code" text NOT NULL;
