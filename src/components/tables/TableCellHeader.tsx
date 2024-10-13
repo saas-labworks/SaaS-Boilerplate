@@ -1,3 +1,4 @@
+'use client'
 /* eslint-disable indent */
 import { useState } from 'react'
 import { ArrowDownWideNarrow, ArrowUpWideNarrow, ChevronsUpDown } from 'lucide-react'
