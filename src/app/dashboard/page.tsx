@@ -11,7 +11,6 @@ export default async function DashboardPage({ children }: Props) {
   // }
 
   // const user = await getUserById(session.user.id!)
-  // console.log(user)
 
   return (
     <div className=''>

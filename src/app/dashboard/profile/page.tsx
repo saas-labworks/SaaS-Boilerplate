@@ -11,7 +11,6 @@ export default async function ProfileDashboardPage() {
     return redirect(AppLinks.SignInPage)
   }
 
-  console.log({ session })
   const user = await getUserById(session.user.id!)
   // const subscription = await getSubscription(user!.id)
 

@@ -7,7 +7,6 @@ export async function getMoneyAccounts(userId: string) {
     where: eq(moneyAccounts.userId, userId)
   })
 
-  console.log(accots)
   return accots as MoneyAccount[]
 }
 

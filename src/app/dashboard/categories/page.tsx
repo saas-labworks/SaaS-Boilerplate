@@ -17,7 +17,6 @@ export default async function CategoriesPage() {
   //   await getCurrencies(session.user!.id!)
   // }
 
-  console.log(categories)
   return (
     <div className='container mx-auto py-10 flex flex-col gap-3'>
       {/* <TableFilters
