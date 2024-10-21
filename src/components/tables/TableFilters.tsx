@@ -1,11 +1,13 @@
-import { ArrowLeftIcon, ArrowRightIcon, DownloadIcon, FilterIcon, RefreshCwIcon, SlidersHorizontalIcon } from 'lucide-react'
+import { ArrowLeftIcon, ArrowRightIcon, DownloadIcon, FilterIcon, RefreshCwIcon } from 'lucide-react'
 import { Button } from '../ui/button'
+import { TableFilterSection } from './TableColumnsToggle'
 
 type Props = {
-  columns: any;
+  columns: string[];
+  refresh: () => void;
 }
 
-export function TableFilters({ columns }: Props) {
+export function TableFilters({ columns, refresh }: Props) {
   return (
     <section className='flex justify-between items-center'>
       <div className='flex gap-2'>
@@ -23,10 +25,9 @@ export function TableFilters({ columns }: Props) {
           <span>Filters</span>
         </Button>
 
-        <Button variant='outline' className='flex gap-1'>
-          <SlidersHorizontalIcon size={20} />
-          <span>Columns</span>
-        </Button>
+        <TableFilterSection
+          columns={columns}
+        />
 
         <Button>
           Add Record
@@ -45,7 +46,11 @@ export function TableFilters({ columns }: Props) {
           </Button>
         </div>
 
-        <Button variant='outline' size='icon'>
+        <Button
+          // onClick={() => refresh()}
+          variant='outline'
+          size='icon'
+        >
           <RefreshCwIcon />
         </Button>
         <Button variant='outline' size='icon'>

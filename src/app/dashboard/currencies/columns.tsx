@@ -3,6 +3,12 @@ import { TableCellHeader } from '@/src/components/tables'
 import { Currency } from '@/src/lib/db'
 import { ColumnDef } from '@tanstack/react-table'
 
+export const columnsNames = [
+  'name',
+  'code',
+  'symbol'
+]
+
 export const columns: ColumnDef<Currency>[] = [
   {
     accessorKey: 'name',
