@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { redirect, RedirectType } from 'next/navigation'
-import { Alert, AlertDescription, AlertTitle } from '@/src/components/ui/alert'
-import { auth } from '@/src/lib/auth'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { auth } from '@/lib/auth'
 
 type Props = {
   children: ReactNode;

@@ -1,13 +1,13 @@
 import { ReactNode } from 'react'
-import { NavbarItem } from '@/src/interface/navbar'
-import { Sheet, SheetContent, SheetTrigger } from '@/src/components/ui/sheet'
+import { NavbarItem } from '@/interface/navbar'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import {
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink
-} from '@/src/components/ui/navigation-menu'
-import { buttonVariants } from '@/src/components/ui/button'
+} from '@/components/ui/navigation-menu'
+import { buttonVariants } from '@/components/ui/button'
 
 type Props = {
   button: ReactNode;

@@ -1,4 +1,4 @@
-import { NavbarItem } from '@/src/interface/navbar'
+import { NavbarItem } from '@/interface/navbar'
 
 export const navbarItems: NavbarItem[] = [
   {

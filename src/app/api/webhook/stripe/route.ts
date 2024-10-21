@@ -1,11 +1,11 @@
 import Stripe from 'stripe'
 import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
-import { AppConstants } from '@/src/lib/config'
-import { getUserById, giveAccess } from '@/src/lib/data-access'
-import { createSubscription, updateSubscription } from '@/src/lib/data-access/subscription'
-import { sendCompletePayment } from '@/src/lib/email'
-import { stripe } from '@/src/lib/stripe'
+import { AppConstants } from '@/lib/config'
+import { getUserById, giveAccess } from '@/lib/data-access'
+import { createSubscription, updateSubscription } from '@/lib/data-access/subscription'
+import { sendCompletePayment } from '@/lib/email'
+import { stripe } from '@/lib/stripe'
 import * as fs from 'fs'
 
 export async function POST(req: Request) {

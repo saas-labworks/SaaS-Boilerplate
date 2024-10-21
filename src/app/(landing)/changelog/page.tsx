@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import Image from 'next/image'
-import { Separator } from '@/src/components/ui/separator'
-import { BasicLayout } from '@/src/components/layouts'
+import { Separator } from '@/components/ui/separator'
+import { BasicLayout } from '@/components/layouts'
 
 // Define the structure of a changelog entry
 interface ChangelogEntry {

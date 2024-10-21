@@ -1,5 +1,5 @@
-import { buttonVariants } from '@/src/components/ui/button'
-import { Card, CardDescription, CardHeader, CardTitle } from '@/src/components/ui/card'
+import { buttonVariants } from '@/components/ui/button'
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { globalConfig } from '@/global.config'
 import Link from 'next/link'
 

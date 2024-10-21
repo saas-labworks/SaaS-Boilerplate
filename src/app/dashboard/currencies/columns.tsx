@@ -1,6 +1,6 @@
 'use client'
-import { TableCellHeader } from '@/src/components/tables'
-import { Currency } from '@/src/lib/db'
+import { TableCellHeader } from '@/components/tables'
+import { Currency } from '@/lib/db'
 import { ColumnDef } from '@tanstack/react-table'
 
 export const columnsNames = [

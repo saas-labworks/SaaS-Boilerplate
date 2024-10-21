@@ -10,7 +10,7 @@ import {
 } from '../ui/dialog'
 import { Textarea } from '../ui/textarea'
 import { Button } from '../ui/button'
-import { cn } from '@/src/lib/utils'
+import { cn } from '@/lib/utils'
 
 type Props = {
   children: ReactNode;

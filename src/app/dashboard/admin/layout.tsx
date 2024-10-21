@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
 import { Search } from 'lucide-react'
-import { Input } from '@/src/components/ui/input'
-import { SideDesktopMenu, SideMobileMenu, UserDropdownMenu } from '@/src/components/dashboard'
-import { adminSideMenuContent } from '@/src/content'
+import { Input } from '@/components/ui/input'
+import { SideDesktopMenu, SideMobileMenu, UserDropdownMenu } from '@/components/dashboard'
+import { adminSideMenuContent } from '@/content'
 
 type Props = {
   children: ReactNode

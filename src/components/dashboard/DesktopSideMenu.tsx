@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Package2, Bell } from 'lucide-react'
-import { Button } from '@/src/components/ui/button'
-import { SideMenuItem } from '@/src/interface/menu'
+import { Button } from '@/components/ui/button'
+import { SideMenuItem } from '@/interface/menu'
 
 type Props = {
   items: SideMenuItem[];

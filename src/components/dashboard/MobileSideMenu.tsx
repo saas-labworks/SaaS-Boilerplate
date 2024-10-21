@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { Menu } from 'lucide-react'
-import { SheetContent, SheetTrigger, Sheet } from '@/src/components/ui/sheet'
-import { Button } from '@/src/components/ui/button'
-import { SideMenuItem } from '@/src/interface/menu'
+import { SheetContent, SheetTrigger, Sheet } from '@/components/ui/sheet'
+import { Button } from '@/components/ui/button'
+import { SideMenuItem } from '@/interface/menu'
 
 type Props = {
   items: SideMenuItem[];

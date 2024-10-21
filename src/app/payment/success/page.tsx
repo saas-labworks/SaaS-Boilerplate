@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { CheckCircle } from 'lucide-react'
-import { buttonVariants } from '@/src/components/ui/button'
-import { ButtonCustomerPortal } from '@/src/components/payments/ButtonCustomerPortal'
-import { AppLinks } from '@/src/content'
+import { buttonVariants } from '@/components/ui/button'
+import { ButtonCustomerPortal } from '@/components/payments/ButtonCustomerPortal'
+import { AppLinks } from '@/content'
 
 export default function PaymentSuccessPage() {
   return (

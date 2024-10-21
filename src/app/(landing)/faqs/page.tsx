@@ -1,6 +1,6 @@
-import { faqs } from '@/src/components/Faqs'
-import { BasicLayout } from '@/src/components/layouts'
-import { Separator } from '@/src/components/ui/separator'
+import { faqs } from '@/components/Faqs'
+import { BasicLayout } from '@/components/layouts'
+import { Separator } from '@/components/ui/separator'
 
 export default function FaqsPage() {
   return (

@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { Switch } from '@/src/components/ui/switch'
+import { Switch } from '@/components/ui/switch'
 import { SubscriptionPaymentCard } from './payments/SubscriptionPaymentCard'
-import { subscriptionPlansDetails, onePaymentPlansDetails } from '@/src/content/pricing'
-import { cn } from '@/src/lib/utils'
+import { subscriptionPlansDetails, onePaymentPlansDetails } from '@/content/pricing'
+import { cn } from '@/lib/utils'
 import { OnePaymentCard } from './payments/OnePaymentCard'
 
 type Props = {

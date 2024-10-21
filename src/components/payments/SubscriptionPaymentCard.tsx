@@ -1,9 +1,9 @@
 import { CircleCheck } from 'lucide-react'
 import { Card } from '../ui/card'
 import { Button } from '../ui/button'
-import { cn } from '@/src/lib/utils'
-import { SubscriptionPlansDetails } from '@/src/interface/pricing'
-import { createStripeCheckout } from '@/src/lib/use-cases'
+import { cn } from '@/lib/utils'
+import { SubscriptionPlansDetails } from '@/interface/pricing'
+import { createStripeCheckout } from '@/lib/use-cases'
 
 interface Props extends SubscriptionPlansDetails {
   isYearly: boolean,

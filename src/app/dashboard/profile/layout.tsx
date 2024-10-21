@@ -1,12 +1,12 @@
 import { ReactNode } from 'react'
 import { Search } from 'lucide-react'
-import { Input } from '@/src/components/ui/input'
-import { SideDesktopMenu, SideMobileMenu } from '@/src/components/dashboard'
-import { AppRoutes, profileSideMenuContent } from '@/src/content'
-import { UserDropdown } from '@/src/components/UserDropdown'
-import { auth } from '@/src/lib/auth'
+import { Input } from '@/components/ui/input'
+import { SideDesktopMenu, SideMobileMenu } from '@/components/dashboard'
+import { AppRoutes, profileSideMenuContent } from '@/content'
+import { UserDropdown } from '@/components/UserDropdown'
+import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
-import { getUserById } from '@/src/lib/data-access'
+import { getUserById } from '@/lib/data-access'
 
 type Props = {
   children: ReactNode

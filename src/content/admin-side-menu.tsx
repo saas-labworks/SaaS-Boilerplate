@@ -1,4 +1,4 @@
-import { SideMenuItem } from '@/src/interface/menu'
+import { SideMenuItem } from '@/interface/menu'
 import { CreditCard, LineChart, Users } from 'lucide-react'
 
 interface AdminSideMenuContent {

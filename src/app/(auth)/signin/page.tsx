@@ -3,10 +3,10 @@ import {
   Card, CardContent,
   CardDescription,
   CardHeader, CardTitle
-} from '@/src/components/ui/card'
-import { Separator } from '@/src/components/ui/separator'
+} from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
 import { siginInMagicLink, siginInOAuth } from './signin.actions'
-import { SignInWithEmail, SignInWithOAuth } from '@/src/components/signin'
+import { SignInWithEmail, SignInWithOAuth } from '@/components/signin'
 
 export default function SingInPage() {
   return (

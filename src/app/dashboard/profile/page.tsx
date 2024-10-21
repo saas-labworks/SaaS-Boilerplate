@@ -1,9 +1,9 @@
-import { auth } from '@/src/lib/auth'
-import { /* getSubscription, */ getUserById } from '@/src/lib/data-access'
+import { auth } from '@/lib/auth'
+import { /* getSubscription, */ getUserById } from '@/lib/data-access'
 // import { BillingDetails } from './BillingDetails'
 import { ProfileDetails } from './ProfileDetails'
 import { redirect } from 'next/navigation'
-import { AppLinks } from '@/src/content'
+import { AppLinks } from '@/content'
 
 export default async function ProfileDashboardPage() {
   const session = await auth()

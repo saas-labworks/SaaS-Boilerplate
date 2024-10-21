@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Button, buttonVariants } from '../ui/button'
 import { UserDropdown } from '../UserDropdown'
-import { AppLinks } from '@/src/content'
+import { AppLinks } from '@/content'
 import { FeedBack } from '../feedback'
 
 type Props = {

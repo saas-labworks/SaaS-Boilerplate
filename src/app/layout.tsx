@@ -1,9 +1,9 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { cn } from '@/src/lib/utils'
+import { cn } from '@/lib/utils'
 import './globals.css'
-import { TooltipProvider } from '@/src/components/ui/tooltip'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import { globalConfig } from '@/global.config'
 import { ThemeProvider } from '../components/theme'
 

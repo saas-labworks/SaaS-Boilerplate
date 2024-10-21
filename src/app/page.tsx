@@ -1,14 +1,14 @@
-import { Navbar } from '@/src/components/Navbar'
-import { Hero } from '@/src/components/Hero'
-import { Pricing } from '@/src/components/Pricing'
-import { Faqs } from '@/src/components/Faqs'
+import { Navbar } from '@/components/Navbar'
+import { Hero } from '@/components/Hero'
+import { Pricing } from '@/components/Pricing'
+import { Faqs } from '@/components/Faqs'
 import { Suspense } from 'react'
 // import { WaitListButton } from '@/components/landing/Waitlist'
-import { Cta } from '@/src/components/landing/CTA'
-import { TestimonialsGrid } from '@/src/components/landing/testimonials'
-import { Features, WithAndWithout } from '@/src/components/landing/Features'
-import { DetailedFooter } from '@/src/components/footer'
-import '@/src/lib/config/env'
+import { Cta } from '@/components/landing/CTA'
+import { TestimonialsGrid } from '@/components/landing/testimonials'
+import { Features, WithAndWithout } from '@/components/landing/Features'
+import { DetailedFooter } from '@/components/footer'
+import '@/lib/config/env'
 
 export default function Home() {
   return (

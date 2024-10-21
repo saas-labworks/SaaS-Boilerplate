@@ -1,4 +1,4 @@
-import { SideMenuItem } from '@/src/interface/menu'
+import { SideMenuItem } from '@/interface/menu'
 import { CircleDollarSign } from 'lucide-react'
 
 interface ProfileSideMenuContent {

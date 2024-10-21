@@ -1,7 +1,7 @@
-import { Faqs } from '@/src/components/Faqs'
-import { BasicLayout } from '@/src/components/layouts'
-import { Pricing } from '@/src/components/Pricing'
-import { auth } from '@/src/lib/auth'
+import { Faqs } from '@/components/Faqs'
+import { BasicLayout } from '@/components/layouts'
+import { Pricing } from '@/components/Pricing'
+import { auth } from '@/lib/auth'
 
 export default async function PaymentPage() {
   const session = await auth()

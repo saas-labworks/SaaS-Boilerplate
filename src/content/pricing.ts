@@ -1,4 +1,4 @@
-import { OnePaymentPlansDetails, SubscriptionPlansDetails } from '@/src/interface/pricing'
+import { OnePaymentPlansDetails, SubscriptionPlansDetails } from '@/interface/pricing'
 
 export const subscriptionPlansDetails: SubscriptionPlansDetails[] = [
   {

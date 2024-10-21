@@ -3,9 +3,9 @@ import { redirect } from 'next/navigation'
 import { z } from 'zod'
 import { AppConstants } from '../config'
 import { stripe } from '../stripe'
-import { actionClient } from '@/src/lib/safe-action'
+import { actionClient } from '@/lib/safe-action'
 import { auth } from '../auth'
-import { AppLinks } from '@/src/content'
+import { AppLinks } from '@/content'
 
 const schema = z.object({
   priceId: z.string().startsWith('price_'),

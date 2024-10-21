@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { AlertCircle } from 'lucide-react'
-import { buttonVariants } from '@/src/components/ui/button'
-import { AppLinks } from '@/src/content'
+import { buttonVariants } from '@/components/ui/button'
+import { AppLinks } from '@/content'
 import { globalConfig } from '@/global.config'
 
 export default function PaymentErrorPage() {

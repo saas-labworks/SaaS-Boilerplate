@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { buttonVariants } from './ui/button'
 import { DesktopNavbar, MobileNavbar } from './landing/header'
-import { navbarItems } from '@/src/content'
+import { navbarItems } from '@/content'
 import { ThemeModeToggle } from './theme'
 
 export function Navbar() {

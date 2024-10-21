@@ -1,10 +1,10 @@
 import { redirect } from 'next/navigation'
 import { DataTable } from '../data-table'
 import { columns /* columnsNames */ } from './columns'
-import { auth } from '@/src/lib/auth'
-import { AppLinks } from '@/src/content'
-import { getCategories } from '@/src/lib/data-access'
-// import { TableFilters } from '@/src/components/tables'
+import { auth } from '@/lib/auth'
+import { AppLinks } from '@/content'
+import { getCategories } from '@/lib/data-access'
+// import { TableFilters } from '@/components/tables'
 
 export default async function CategoriesPage() {
   const session = await auth()

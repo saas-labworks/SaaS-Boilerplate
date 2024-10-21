@@ -1,10 +1,10 @@
-import { ButtonCustomerPortal } from '@/src/components/payments/ButtonCustomerPortal'
-import { Badge } from '@/src/components/ui/badge'
-import { buttonVariants } from '@/src/components/ui/button'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/src/components/ui/card'
-import { Progress } from '@/src/components/ui/progress'
-import { subscriptionPlansDetails } from '@/src/content'
-import { Subscription, User } from '@/src/lib/db'
+import { ButtonCustomerPortal } from '@/components/payments/ButtonCustomerPortal'
+import { Badge } from '@/components/ui/badge'
+import { buttonVariants } from '@/components/ui/button'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Progress } from '@/components/ui/progress'
+import { subscriptionPlansDetails } from '@/content'
+import { Subscription, User } from '@/lib/db'
 
 type Props = {
   user: User;

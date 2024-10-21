@@ -1,12 +1,12 @@
 import { CircleUser } from 'lucide-react'
-import { Button } from '@/src/components/ui/button'
-import { Separator } from '@/src/components/ui/separator'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 import {
   DropdownMenu, DropdownMenuContent,
   DropdownMenuItem, DropdownMenuTrigger
-} from '@/src/components/ui/dropdown-menu'
+} from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
-import { SideMenuItem } from '@/src/interface/menu'
+import { SideMenuItem } from '@/interface/menu'
 import { ButtonSignOut } from './ButtonSignOut'
 
 type Props = {

@@ -1,5 +1,5 @@
-import { BasicLayout } from '@/src/components/layouts'
-import { Separator } from '@/src/components/ui/separator'
+import { BasicLayout } from '@/components/layouts'
+import { Separator } from '@/components/ui/separator'
 import { globalConfig } from '@/global.config'
 import { Metadata } from 'next'
 

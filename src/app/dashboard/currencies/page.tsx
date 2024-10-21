@@ -1,10 +1,10 @@
 import { redirect } from 'next/navigation'
 import { DataTable } from '../data-table'
 import { columns /* columnsNames */ } from './columns'
-import { auth } from '@/src/lib/auth'
-import { AppLinks } from '@/src/content'
-import { getCurrencies } from '@/src/lib/data-access'
-// import { TableFilters } from '@/src/components/tables'
+import { auth } from '@/lib/auth'
+import { AppLinks } from '@/content'
+import { getCurrencies } from '@/lib/data-access'
+// import { TableFilters } from '@/components/tables'
 
 export default async function ExpensesPage() {
   const session = await auth()

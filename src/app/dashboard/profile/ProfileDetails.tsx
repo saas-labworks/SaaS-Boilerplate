@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import { Camera } from 'lucide-react'
-import { LoaderFormButton } from '@/src/components/LoaderFormButton'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/src/components/ui/card'
-import { Input } from '@/src/components/ui/input'
-import { Label } from '@/src/components/ui/label'
-import { Skeleton } from '@/src/components/ui/skeleton'
-import { updateUser } from '@/src/lib/data-access'
-import { User } from '@/src/lib/db'
+import { LoaderFormButton } from '@/components/LoaderFormButton'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Skeleton } from '@/components/ui/skeleton'
+import { updateUser } from '@/lib/data-access'
+import { User } from '@/lib/db'
 
 type Props = {
   user: User

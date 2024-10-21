@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import { CUSTOMER_PORTAL_LINK } from '@/src/content'
-import { auth } from '@/src/lib/auth'
+import { CUSTOMER_PORTAL_LINK } from '@/content'
+import { auth } from '@/lib/auth'
 
 type Props = {
   className?: string;

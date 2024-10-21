@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent } from '@/src/components/ui/card'
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { CheckIcon, XIcon } from 'lucide-react'
 
 export function WithAndWithout() {

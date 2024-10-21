@@ -5,16 +5,16 @@ import {
   CircleUser, CreditCard, LogOut,
   ScrollText, UserCircle
 } from 'lucide-react'
-import { Button } from '@/src/components/ui/button'
-import { Separator } from '@/src/components/ui/separator'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 import {
   DropdownMenu, DropdownMenuContent,
   DropdownMenuItem, DropdownMenuTrigger
-} from '@/src/components/ui/dropdown-menu'
+} from '@/components/ui/dropdown-menu'
 import { ButtonSignOut } from '../dashboard/ButtonSignOut'
-import { auth } from '@/src/lib/auth'
+import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
-import { getUserById } from '@/src/lib/data-access'
+import { getUserById } from '@/lib/data-access'
 
 const items = [
   {
