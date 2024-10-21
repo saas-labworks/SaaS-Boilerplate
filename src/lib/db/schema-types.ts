@@ -20,7 +20,9 @@ export type Authenticator = typeof authenticators.$inferSelect
 export type Subscription = typeof subscriptions.$inferSelect
 
 export type Currency = typeof currencies.$inferSelect
-export type Category = typeof categories.$inferInsert
+export type Category = typeof categories.$inferInsert & {
+  parentCategory?: Category;
+}
 // export type Budget = typeof budgets.$inferInsert
 // export type MoneyAccount = typeof moneyAccounts.$inferInsert
 // export type Expense = typeof expenses.$inferInsert
