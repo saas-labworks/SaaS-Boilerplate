@@ -169,21 +169,21 @@ export const categoryRelations = relations(
 //   }
 // )
 
-// export const moneyAccounts = pgTable(
-//   'money_account',
-//   {
-//     id: serial('id').primaryKey(),
-//     userId: text('user_id')
-//       .notNull()
-//       .references(() => users.id, { onDelete: 'restrict' }),
-//     name: text('name').notNull(),
-//     description: text('description'),
-//     currencyId: serial('currency_id')
-//       .notNull()
-//       .references(() => currencies.id),
-//     balance: integer('balance').notNull().default(0)
-//   }
-// )
+export const moneyAccounts = pgTable(
+  'money_account',
+  {
+    id: serial('id').primaryKey(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'restrict' }),
+    name: text('name').notNull(),
+    description: text('description'),
+    currencyId: serial('currency_id')
+      .notNull()
+      .references(() => currencies.id),
+    balance: integer('balance').notNull().default(0)
+  }
+)
 
 // export const expenses = pgTable(
 //   'expenses',

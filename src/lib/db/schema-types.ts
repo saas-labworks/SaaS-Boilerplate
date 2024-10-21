@@ -1,7 +1,7 @@
 import {
   authenticators, users, verificationTokens, sessions,
-  accounts, subscriptions, currencies, categories
-  // budgets, moneyAccounts, expenses, incomes,
+  accounts, subscriptions, currencies, categories,
+  moneyAccounts // budgets, expenses, incomes,
   // transferences
 } from './schema'
 
@@ -24,7 +24,9 @@ export type Category = typeof categories.$inferInsert & {
   parentCategory?: Category;
 }
 // export type Budget = typeof budgets.$inferInsert
-// export type MoneyAccount = typeof moneyAccounts.$inferInsert
+export type MoneyAccount = typeof moneyAccounts.$inferInsert & {
+  currency?: Currency;
+}
 // export type Expense = typeof expenses.$inferInsert
 // export type Income = typeof incomes.$inferInsert
 // export type Transference = typeof transferences.$inferInsert
