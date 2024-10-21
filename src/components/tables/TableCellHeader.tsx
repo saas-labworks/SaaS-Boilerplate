@@ -23,11 +23,11 @@ export function TableCellHeader({ title }: Props) {
     >
       <span>{title}</span>
       {sortType === SortType.NONE
-        ? <ChevronsUpDown />
+        ? <ChevronsUpDown size={18} />
         : (
           sortType === SortType.ASC
-            ? <ArrowUpWideNarrow />
-            : <ArrowDownWideNarrow />
+            ? <ArrowUpWideNarrow size={18} />
+            : <ArrowDownWideNarrow size={18} />
         )}
     </div>
   )

@@ -1,8 +1,8 @@
 import {
   authenticators, users, verificationTokens, sessions,
   accounts, subscriptions, currencies, categories,
-  moneyAccounts // budgets, expenses, incomes,
-  // transferences
+  moneyAccounts, // budgets, expenses, incomes,
+  transferences
 } from './schema'
 
 /**
@@ -29,4 +29,7 @@ export type MoneyAccount = typeof moneyAccounts.$inferInsert & {
 }
 // export type Expense = typeof expenses.$inferInsert
 // export type Income = typeof incomes.$inferInsert
-// export type Transference = typeof transferences.$inferInsert
+export type Transference = typeof transferences.$inferInsert & {
+  fromCurrency?: Currency;
+  toCurrency?: Currency;
+}

@@ -7,16 +7,16 @@ interface ProfileSideMenuContent {
 
 export const dashboardSideMenuContent: ProfileSideMenuContent = {
   items: [
-    {
-      icon: <CircleDollarSign className='h-4 w-4' />,
-      text: 'Incomes',
-      link: '/dashboard/incomes'
-    },
-    {
-      icon: <CircleDollarSign className='h-4 w-4' />,
-      text: 'Expenses',
-      link: '/dashboard/expenses'
-    },
+    // {
+    //   icon: <CircleDollarSign className='h-4 w-4' />,
+    //   text: 'Incomes',
+    //   link: '/dashboard/incomes'
+    // },
+    // {
+    //   icon: <CircleDollarSign className='h-4 w-4' />,
+    //   text: 'Expenses',
+    //   link: '/dashboard/expenses'
+    // },
     {
       icon: <CircleDollarSign className='h-4 w-4' />,
       text: 'Transferences',

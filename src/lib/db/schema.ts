@@ -225,22 +225,22 @@ export const moneyAccounts = pgTable(
 //   }
 // )
 
-// export const transferences = pgTable(
-//   'transference',
-//   {
-//     id: serial('id').primaryKey(),
-//     userId: text('user_id')
-//       .notNull()
-//       .references(() => users.id, { onDelete: 'cascade' }),
-//     fromCurrencyId: serial('from_currency_id')
-//       .notNull()
-//       .references(() => currencies.id),
-//     toCurrencyId: serial('to_currency_id')
-//       .notNull()
-//       .references(() => currencies.id),
-//     amount: integer('amount').notNull(),
-//     date: timestamp('date', { mode: 'date' }).notNull(),
-//     description: text('description'),
-//     createdAt: timestamp('created_at', { mode: 'date' }).$defaultFn(() => new Date())
-//   }
-// )
+export const transferences = pgTable(
+  'transference',
+  {
+    id: serial('id').primaryKey(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    fromCurrencyId: serial('from_currency_id')
+      .notNull()
+      .references(() => currencies.id),
+    toCurrencyId: serial('to_currency_id')
+      .notNull()
+      .references(() => currencies.id),
+    amount: integer('amount').notNull(),
+    date: timestamp('date', { mode: 'date' }).notNull(),
+    description: text('description'),
+    createdAt: timestamp('created_at', { mode: 'date' }).$defaultFn(() => new Date())
+  }
+)
