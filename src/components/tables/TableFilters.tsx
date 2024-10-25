@@ -1,6 +1,7 @@
 import { ArrowLeftIcon, ArrowRightIcon, DownloadIcon, FilterIcon, RefreshCwIcon } from 'lucide-react'
-import { Button } from '../ui/button'
+import { Button, buttonVariants } from '../ui/button'
 import { TableFilterSection } from './TableColumnsToggle'
+import Link from 'next/link'
 
 type Props = {
   columns: string[];
@@ -29,9 +30,12 @@ export function TableFilters({ columns, refresh }: Props) {
           columns={columns}
         />
 
-        <Button>
+        <Link
+          href='dashboard/currencies/add'
+          className={buttonVariants({ variant: 'default' })}
+        >
           Add Record
-        </Button>
+        </Link>
       </div>
 
       <div className='flex gap-2'>

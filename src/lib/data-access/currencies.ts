@@ -13,7 +13,7 @@ export async function getCurrencyById(currencyId: number) {
   })
 }
 
-export async function createCurrency(data: Currency) {
+export async function createCurrency(data: Omit<Currency, 'id'>) {
   await database.insert(currencies).values(data).execute()
 }
 

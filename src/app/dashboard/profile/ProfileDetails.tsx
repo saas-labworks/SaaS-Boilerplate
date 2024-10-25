@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Camera } from 'lucide-react'
-import { LoaderFormButton } from '@/components/LoaderFormButton'
+import { LoaderFormButton } from '@/components/buttons/LoaderFormButton'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'

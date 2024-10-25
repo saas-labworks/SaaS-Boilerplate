@@ -1,7 +1,7 @@
 'use client'
 import React, { ReactNode } from 'react'
-import { Button, ButtonProps } from './ui/button'
-import { cn } from '../lib/utils'
+import { Button, ButtonProps } from '../ui/button'
+import { cn } from '../../lib/utils'
 import { Loader2Icon } from 'lucide-react'
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 } & ButtonProps
 // } & React.ComponentPropsWithoutRef<'button'>
 
-export function LoaderFormButton({ className, children, isLoading, ...props }: Props) {
+export function LoaderButton({ className, children, isLoading, ...props }: Props) {
   return (
     <Button
       className={cn('w-full flex gap-2', className)}

@@ -1,12 +1,12 @@
 import { redirect } from 'next/navigation'
 import { DataTable } from '../data-table'
-import { columns /* columnsNames */ } from './columns'
+import { columns, columnsNames } from './columns'
 import { auth } from '@/lib/auth'
 import { AppLinks } from '@/content'
 import { getCurrencies } from '@/lib/data-access'
-// import { TableFilters } from '@/components/tables'
+import { TableFilters } from '@/components/tables'
 
-export default async function ExpensesPage() {
+export default async function CurrenciesPage() {
   const session = await auth()
   if (!session?.user) {
     return redirect(AppLinks.SignInPage)
@@ -19,10 +19,10 @@ export default async function ExpensesPage() {
 
   return (
     <div className='container mx-auto py-10 flex flex-col gap-3'>
-      {/* <TableFilters
+      <TableFilters
         refresh={() => { }}
         columns={columnsNames}
-      /> */}
+      />
       <DataTable columns={columns} data={currencies} />
     </div>
   )

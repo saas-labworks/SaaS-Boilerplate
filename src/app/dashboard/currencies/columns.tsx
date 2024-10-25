@@ -9,6 +9,24 @@ export const columnsNames = [
   'symbol'
 ]
 
+export const columnsDetails = [
+  {
+    key: 'name',
+    label: 'Name',
+    type: 'string'
+  },
+  {
+    key: 'code',
+    label: 'Code',
+    type: 'string'
+  },
+  {
+    key: 'symbol',
+    label: 'Symbol',
+    type: 'string'
+  }
+]
+
 export const columns: ColumnDef<Currency>[] = [
   {
     accessorKey: 'name',

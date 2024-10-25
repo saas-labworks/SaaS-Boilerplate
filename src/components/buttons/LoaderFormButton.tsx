@@ -2,8 +2,8 @@
 import { ReactNode } from 'react'
 import { useFormStatus } from 'react-dom'
 import { Loader2Icon } from 'lucide-react'
-import { Button } from './ui/button'
-import { cn } from '../lib/utils'
+import { Button } from '../ui/button'
+import { cn } from '../../lib/utils'
 
 type Props = {
   children: ReactNode
