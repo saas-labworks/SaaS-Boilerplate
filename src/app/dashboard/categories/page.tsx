@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { DataTable } from '../data-table'
-import { columns /* columnsNames */ } from './columns'
+import { columns } from './columns'
 import { auth } from '@/lib/auth'
 import { AppLinks } from '@/content'
 import { getCategories } from '@/lib/data-access'
@@ -19,11 +19,12 @@ export default async function CategoriesPage() {
 
   return (
     <div className='container mx-auto py-10 flex flex-col gap-3'>
-      {/* <TableFilters
-        refresh={() => { }}
-        columns={columnsNames}
-      /> */}
-      <DataTable columns={columns} data={categories} />
+      <DataTable
+        columns={columns}
+        data={categories}
+        dashboardSubpage='categories'
+        name='Category'
+      />
     </div>
   )
 }

@@ -4,30 +4,6 @@ import { DataTableColumnHeader } from '@/components/tables'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Currency } from '@/lib/db'
 
-export const columnsNames = [
-  'name',
-  'code',
-  'symbol'
-]
-
-export const columnsDetails = [
-  {
-    key: 'name',
-    label: 'Name',
-    type: 'string'
-  },
-  {
-    key: 'code',
-    label: 'Code',
-    type: 'string'
-  },
-  {
-    key: 'symbol',
-    label: 'Symbol',
-    type: 'string'
-  }
-]
-
 export const columns: ColumnDef<Currency>[] = [
   {
     id: 'select',

@@ -4,5 +4,6 @@ export const AppLinks = {
   Dashboard: '/dashboard/profile',
   PricingPage: '/pricing',
 
-  CurrenciesPage: '/dashboard/currencies'
+  CurrenciesPage: '/dashboard/currencies',
+  CategoriesPage: '/dashboard/categories'
 }

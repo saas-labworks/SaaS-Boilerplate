@@ -1,10 +1,22 @@
 import { eq } from 'drizzle-orm'
 import { database, Category, categories } from '../db'
 
-export async function getCategories(userId: string, includes: string[] = []) {
+type Pagination = {
+  offset: number;
+  limit: number;
+}
+type Filter = {}
+
+type Extras = {
+  pagination?: Pagination
+  filters?: Filter[];
+}
+
+export async function getCategories(userId: string, extras?: Extras) {
   const categs = await database.query.categories.findMany({
+    where: eq(categories.userId, userId),
     with: { parentCategory: true },
-    where: eq(categories.userId, userId)
+    ...(extras?.pagination ?? {})
   })
 
   return categs as Category[]
