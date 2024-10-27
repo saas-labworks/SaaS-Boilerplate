@@ -1,9 +1,21 @@
 import { eq } from 'drizzle-orm'
 import { database, Currency, currencies } from '../db'
 
-export async function getCurrencies(userId: string) {
+type Pagination = {
+  offset: number;
+  limit: number;
+}
+type Filter = {}
+
+type Extras = {
+  pagination?: Pagination
+  filters?: Filter[];
+}
+
+export async function getCurrencies(userId: string, extras?: Extras) {
   return await database.query.currencies.findMany({
-    where: eq(currencies.userId, userId)
+    where: eq(currencies.userId, userId),
+    ...(extras?.pagination ?? {})
   })
 }
 

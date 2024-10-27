@@ -25,33 +25,31 @@ import { TableFilters } from '@/components/tables'
 import { useState } from 'react'
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
+  dashboardSubpage: string;
+  name: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
-  data
+  data,
+  name, dashboardSubpage
 }: DataTableProps<TData, TValue>) {
   // TODO: save status into database to persist data (first start with localstorage)
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = useState({})
-  // const [pagination, setPagination] = useState<PaginationState>({ pageIndex: 0, pageSize: 3 })
   const table = useReactTable({
     data,
     columns,
-    // manualPagination: true,
-    // rowCount: data.length,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
-    // onPaginationChange: setPagination,
     state: {
-      // pagination,
       sorting,
       columnVisibility,
       rowSelection
@@ -62,8 +60,8 @@ export function DataTable<TData, TValue>({
     <div className='container mx-auto py-10 flex flex-col gap-3'>
       <TableFilters
         table={table}
-        dashboardSubpage='currencies'
-        name='Currency'
+        dashboardSubpage={dashboardSubpage}
+        name={name}
       />
 
       <div className='rounded-md border'>

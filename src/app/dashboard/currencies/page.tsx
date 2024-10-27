@@ -18,7 +18,12 @@ export default async function CurrenciesPage() {
 
   return (
     <div className='container mx-auto py-10 flex flex-col gap-3'>
-      <DataTable columns={columns} data={currencies} />
+      <DataTable
+        columns={columns}
+        data={currencies}
+        dashboardSubpage='currencies'
+        name='Currency'
+      />
     </div>
   )
 }
