@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useAction } from 'next-safe-action/hooks'
 import { redirect } from 'next/navigation'
 import { toast } from 'sonner'
-import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
+import { CheckIcon, ChevronsUpDownIcon, PlusIcon } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { createCategoryAction } from '@/lib/use-cases'
@@ -16,12 +16,12 @@ import { Category } from '@/lib/db'
 import { cn } from '@/lib/utils'
 
 type Props = {
-  categories: Category[]
+  categories: Category[];
+  categoriesTree: Map<number, Category[]>;
 }
 
-export function AddCategoryPage({ categories }: Props) {
+export function AddCategoryPage({ categories, categoriesTree }: Props) {
   const [open, setOpen] = useState(false)
-
   const [openCombobox, setOpenCombobox] = useState<boolean[]>([])
   const [selectedCategories, setSelectedCategories] = useState<Category[]>([])
   const { executeAsync, result, isPending, reset, hasSucceeded } = useAction(createCategoryAction, {
@@ -33,6 +33,7 @@ export function AddCategoryPage({ categories }: Props) {
     }
   })
 
+  const treeDepth = selectedCategories.length
   const onOpenChange = (index: number, open: boolean) => {
     setOpenCombobox(prev => {
       const newOpenCombobox = [...prev]
@@ -94,10 +95,14 @@ export function AddCategoryPage({ categories }: Props) {
                 <CommandList>
                   <CommandEmpty>No category found.</CommandEmpty>
                   <CommandGroup>
-                    {categories.map((category) => (
+                    {(index === 0
+                      ? categories
+                      : categoriesTree.get(category.id!) ?? []
+                    ).map((category) => (
                       <CommandItem
                         key={category.id}
                         value={category.name}
+                        className='flex justify-between'
                         onSelect={() => {
                           if (selectedCategories[index].id === category.id) return
                           setSelectedCategories(prev => [
@@ -110,13 +115,19 @@ export function AddCategoryPage({ categories }: Props) {
                           ])
                         }}
                       >
-                        <CheckIcon
-                          className={cn(
-                            'mr-2 h-4 w-4',
-                            selectedCategories[index].id === category.id ? 'opacity-100' : 'opacity-0'
-                          )}
-                        />
-                        {category.name}
+                        <div className='flex'>
+                          <CheckIcon
+                            className={cn(
+                              'mr-2 h-4 w-4',
+                              selectedCategories[index].id === category.id ? 'opacity-100' : 'opacity-0'
+                            )}
+                          />
+                          {category.name}
+                        </div>
+
+                        {categoriesTree.has(category.id!) && (
+                          <PlusIcon className='h-4 w-4' />
+                        )}
                       </CommandItem>
                     ))}
                   </CommandGroup>
@@ -126,42 +137,53 @@ export function AddCategoryPage({ categories }: Props) {
           </Popover>
         ))}
 
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant='outline'
-              role='combobox'
-              aria-expanded={open}
-              className='w-[200px] justify-between'
-            >
-              Select category...
-              <ChevronsUpDownIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className='w-[200px] p-0'>
-            <Command>
-              <CommandInput placeholder='Search category...' />
-              <CommandList>
-                <CommandEmpty>No category found.</CommandEmpty>
-                <CommandGroup>
-                  {categories.map((category) => (
-                    <CommandItem
-                      key={category.id}
-                      value={category.name}
-                      onSelect={() => {
-                        setSelectedCategories(prev => [...prev, category])
-                        setOpenCombobox(prev => [...prev, false])
-                        setOpen(false)
-                      }}
-                    >
-                      {category.name}
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              </CommandList>
-            </Command>
-          </PopoverContent>
-        </Popover>
+        {(treeDepth === 0 || categoriesTree.has(selectedCategories[treeDepth - 1].id!)) && (
+          <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+              <Button
+                variant='outline'
+                role='combobox'
+                aria-expanded={open}
+                className='w-[200px] justify-between'
+              >
+                Select category...
+                <ChevronsUpDownIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className='w-[200px] p-0'>
+              <Command>
+                <CommandInput placeholder='Search category...' />
+                <CommandList>
+                  <CommandEmpty>No category found.</CommandEmpty>
+                  <CommandGroup>
+                    {categories
+                      .filter(c => treeDepth === 0
+                        ? true
+                        : c.parentCategoryId === selectedCategories[treeDepth - 1].id
+                      )
+                      .map((category) => (
+                        <CommandItem
+                          key={category.id}
+                          value={category.name}
+                          className='flex justify-between'
+                          onSelect={() => {
+                            setSelectedCategories(prev => [...prev, category])
+                            setOpenCombobox(prev => [...prev, false])
+                            setOpen(false)
+                          }}
+                        >
+                          {category.name}
+                          {categoriesTree.has(category.id!) && (
+                            <PlusIcon className='h-4 w-4' />
+                          )}
+                        </CommandItem>
+                      ))}
+                  </CommandGroup>
+                </CommandList>
+              </Command>
+            </PopoverContent>
+          </Popover>
+        )}
       </div>
 
       <div className='flex justify-end'>
