@@ -1,10 +1,9 @@
 import { redirect } from 'next/navigation'
 import { DataTable } from '../data-table'
-import { columns, columnsNames } from './columns'
+import { columns } from './columns'
 import { auth } from '@/lib/auth'
 import { AppLinks } from '@/content'
 import { getCurrencies } from '@/lib/data-access'
-import { TableFilters } from '@/components/tables'
 
 export default async function CurrenciesPage() {
   const session = await auth()
@@ -19,10 +18,6 @@ export default async function CurrenciesPage() {
 
   return (
     <div className='container mx-auto py-10 flex flex-col gap-3'>
-      <TableFilters
-        refresh={() => { }}
-        columns={columnsNames}
-      />
       <DataTable columns={columns} data={currencies} />
     </div>
   )

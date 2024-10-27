@@ -1,5 +1,5 @@
 'use client'
-import { TableCellHeader } from '@/components/tables'
+import { DataTableColumnHeader } from '@/components/tables'
 import { MoneyAccount } from '@/lib/db'
 import { ColumnDef } from '@tanstack/react-table'
 
@@ -13,15 +13,15 @@ export const columnsNames = [
 export const columns: ColumnDef<MoneyAccount>[] = [
   {
     accessorKey: 'name',
-    header: () => <TableCellHeader title='Name' />
+    header: () => <DataTableColumnHeader title='Name' />
   },
   {
     accessorKey: 'description',
-    header: () => <TableCellHeader title='Description' />
+    header: () => <DataTableColumnHeader title='Description' />
   },
   {
     accessorKey: 'currency',
-    header: () => <TableCellHeader title='Currency' />,
+    header: () => <DataTableColumnHeader title='Currency' />,
     cell: ({ row }) => {
       const currency = row.original.currency
       return currency?.name ?? '--'
@@ -29,7 +29,7 @@ export const columns: ColumnDef<MoneyAccount>[] = [
   },
   {
     accessorKey: 'balance',
-    header: () => <TableCellHeader title='Balance' />
+    header: () => <DataTableColumnHeader title='Balance' />
   }
 
 ]

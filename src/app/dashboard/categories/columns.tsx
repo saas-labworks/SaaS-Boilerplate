@@ -1,5 +1,5 @@
 'use client'
-import { TableCellHeader } from '@/components/tables'
+import { DataTableColumnHeader } from '@/components/tables'
 import { Category } from '@/lib/db'
 import { ColumnDef } from '@tanstack/react-table'
 
@@ -11,11 +11,11 @@ export const columnsNames = [
 export const columns: ColumnDef<Category>[] = [
   {
     accessorKey: 'name',
-    header: () => <TableCellHeader title='Name' />
+    header: () => <DataTableColumnHeader title='Name' />
   },
   {
     accessorKey: 'parentCategory',
-    header: () => <TableCellHeader title='Parent Category' />,
+    header: () => <DataTableColumnHeader title='Parent Category' />,
     cell: ({ row }) => {
       const category = row.original.parentCategory
       return category?.name ?? '--'

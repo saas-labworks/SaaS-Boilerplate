@@ -1,7 +1,8 @@
 'use client'
-import { TableCellHeader } from '@/components/tables'
-import { Currency } from '@/lib/db'
 import { ColumnDef } from '@tanstack/react-table'
+import { DataTableColumnHeader } from '@/components/tables'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Currency } from '@/lib/db'
 
 export const columnsNames = [
   'name',
@@ -29,15 +30,52 @@ export const columnsDetails = [
 
 export const columns: ColumnDef<Currency>[] = [
   {
+    id: 'select',
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && 'indeterminate')
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label='Select all'
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label='Select row'
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false
+  },
+  {
     accessorKey: 'name',
-    header: () => <TableCellHeader title='Name' />
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        title='Name'
+        column={column}
+      />
+    )
   },
   {
     accessorKey: 'code',
-    header: () => <TableCellHeader title='Code' />
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        title='Code'
+        column={column}
+      />
+    )
   },
   {
     accessorKey: 'symbol',
-    header: () => <TableCellHeader title='Symbol' />
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        title='Symbol'
+        column={column}
+      />
+    )
   }
 ]

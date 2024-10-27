@@ -1,5 +1,5 @@
 'use client'
-import { TableCellHeader } from '@/components/tables'
+import { DataTableColumnHeader } from '@/components/tables'
 import { Transference } from '@/lib/db'
 import { ColumnDef } from '@tanstack/react-table'
 
@@ -15,19 +15,19 @@ export const columnsNames = [
 export const columns: ColumnDef<Transference>[] = [
   {
     accessorKey: 'id',
-    header: () => <TableCellHeader title='Id' />
+    header: () => <DataTableColumnHeader title='Id' />
   },
   {
     accessorKey: 'fromCurrency',
-    header: () => <TableCellHeader title='From Currency' />
+    header: () => <DataTableColumnHeader title='From Currency' />
   },
   {
     accessorKey: 'toCurrency',
-    header: () => <TableCellHeader title='To Currency' />
+    header: () => <DataTableColumnHeader title='To Currency' />
   },
   {
     accessorKey: 'amount',
-    header: () => <TableCellHeader title='Amount' />,
+    header: () => <DataTableColumnHeader title='Amount' />,
     cell: ({ row }) => {
       // const currency = row.original.currency
       // return currency?.name ?? '--'
@@ -36,10 +36,10 @@ export const columns: ColumnDef<Transference>[] = [
   },
   {
     accessorKey: 'date',
-    header: () => <TableCellHeader title='Date' />
+    header: () => <DataTableColumnHeader title='Date' />
   },
   {
     accessorKey: 'description',
-    header: () => <TableCellHeader title='Description' />
+    header: () => <DataTableColumnHeader title='Description' />
   }
 ]

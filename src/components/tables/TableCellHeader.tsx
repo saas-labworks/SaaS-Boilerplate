@@ -1,34 +1,49 @@
 'use client'
 /* eslint-disable indent */
-import { useState } from 'react'
-import { ArrowDownWideNarrow, ArrowUpWideNarrow, ChevronsUpDown } from 'lucide-react'
+import React from 'react'
+import { ArrowDownWideNarrowIcon, ArrowUpWideNarrowIcon, ChevronsUpDownIcon } from 'lucide-react'
+import { Column } from '@tanstack/react-table'
+import { cn } from '@/lib/utils'
 
-type Props = {
+interface Props<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
+  column: Column<TData, TValue>
 }
 
-const SortType = {
-  NONE: 0,
-  ASC: 1,
-  DESC: 2
-}
+export function DataTableColumnHeader<TData, TValue>({
+  column,
+  title,
+  className
+}: Props<TData, TValue>) {
+  if (!column.getCanSort()) {
+    return <div className={cn(className)}>{title}</div>
+  }
 
-export function TableCellHeader({ title }: Props) {
-  const [sortType, setSortType] = useState<number>(SortType.NONE)
-
+  // FIXME: fix sort
   return (
     <div
       className='flex justify-between'
-      onClick={() => setSortType(p => (p + 1) % 3)}
+      onClick={() => {
+        switch (column.getIsSorted()) {
+          case 'asc':
+            column.toggleSorting(false)
+            break
+          case 'desc':
+            column.toggleSorting(true)
+            break
+          default:
+            column.toggleSorting(true, true)
+            break
+        }
+      }}
     >
       <span>{title}</span>
-      {sortType === SortType.NONE
-        ? <ChevronsUpDown size={18} />
-        : (
-          sortType === SortType.ASC
-            ? <ArrowUpWideNarrow size={18} />
-            : <ArrowDownWideNarrow size={18} />
-        )}
+
+      {column.getIsSorted() === 'desc'
+        ? (<ArrowDownWideNarrowIcon className='ml-2 h-4 w-4' />)
+        : column.getIsSorted() === 'asc'
+          ? (<ArrowUpWideNarrowIcon className='ml-2 h-4 w-4' />)
+          : (<ChevronsUpDownIcon className='ml-2 h-4 w-4' />)}
     </div>
   )
 }
