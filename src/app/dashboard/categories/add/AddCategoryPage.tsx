@@ -54,7 +54,12 @@ export function AddCategoryPage({ categories, categoriesTree }: Props) {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
         const name = formData.get('name') as string
-        await executeAsync({ name })
+        await executeAsync({
+          name,
+          parentCategoryId: treeDepth === 0
+            ? undefined
+            : selectedCategories[treeDepth - 1]?.id
+        })
       }}
     >
       <div>
@@ -83,7 +88,7 @@ export function AddCategoryPage({ categories, categoriesTree }: Props) {
                 variant='outline'
                 role='combobox'
                 aria-expanded={openCombobox[index]}
-                className='w-[200px] justify-between'
+                className='w-[200px] justify-between mb-3'
               >
                 {categories.find((category) => category.id === selectedCategories[index].id)?.name}
                 <ChevronsUpDownIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
