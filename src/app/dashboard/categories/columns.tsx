@@ -1,13 +1,11 @@
 'use client'
+import Link from 'next/link'
+import { SquareArrowOutUpRightIcon } from 'lucide-react'
+import { ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/components/tables'
 import { Checkbox } from '@/components/ui/checkbox'
+import { AppLinks } from '@/content'
 import { Category } from '@/lib/db'
-import { ColumnDef } from '@tanstack/react-table'
-
-export const columnsNames = [
-  'name',
-  'parentCategory'
-]
 
 export const columns: ColumnDef<Category>[] = [
   {
@@ -39,6 +37,15 @@ export const columns: ColumnDef<Category>[] = [
         title='Name'
         column={column}
       />
+    ),
+    cell: ({ row }) => (
+      <Link
+        href={`${AppLinks.CurrenciesPage}/${row.original.id}`}
+        className='underline flex gap-2'
+      >
+        {row.original.name}
+        <SquareArrowOutUpRightIcon className='w-4 h-4' />
+      </Link>
     )
   },
   {

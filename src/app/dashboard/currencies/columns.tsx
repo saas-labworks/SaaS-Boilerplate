@@ -1,7 +1,10 @@
 'use client'
+import Link from 'next/link'
+import { SquareArrowOutUpRightIcon } from 'lucide-react'
 import { ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/components/tables'
 import { Checkbox } from '@/components/ui/checkbox'
+import { AppLinks } from '@/content'
 import { Currency } from '@/lib/db'
 
 export const columns: ColumnDef<Currency>[] = [
@@ -34,6 +37,15 @@ export const columns: ColumnDef<Currency>[] = [
         title='Name'
         column={column}
       />
+    ),
+    cell: ({ row }) => (
+      <Link
+        href={`${AppLinks.CurrenciesPage}/${row.original.id}`}
+        className='underline flex gap-2'
+      >
+        {row.original.name}
+        <SquareArrowOutUpRightIcon className='w-4 h-4' />
+      </Link>
     )
   },
   {
