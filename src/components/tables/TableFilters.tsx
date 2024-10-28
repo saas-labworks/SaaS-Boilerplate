@@ -11,14 +11,25 @@ import {
   DropdownMenuItem
 } from '@/components/ui/dropdown-menu'
 import { SimpleTooltip } from '../tooltips'
+import { DropButton } from './DropButton'
+import { RootEntity } from '@/interface/common'
 
 type Props<TData> = {
   table: Table<TData>;
-  dashboardSubpage: string,
+  data: TData[];
+  dashboardSubpage: string;
   name: string;
 }
 
-export function TableFilters<TData>({ table, name, dashboardSubpage }: Props<TData>) {
+export function TableFilters<TData>({
+  table,
+  name,
+  data,
+  dashboardSubpage
+}: Props<TData>) {
+  // these are the index of currencies in the original array
+  const selectedRows = Object.keys(table.getState().rowSelection).map(Number)
+
   return (
     <section className='flex justify-between items-center'>
       <div className='flex gap-2'>
@@ -57,12 +68,43 @@ export function TableFilters<TData>({ table, name, dashboardSubpage }: Props<TDa
         </DropdownMenu>
 
         {/* Add Record Button */}
-        <Link
-          href={`${dashboardSubpage}/add`}
-          className={buttonVariants({ variant: 'default' })}
-        >
-          Add {name}
-        </Link>
+        {selectedRows.length === 0 && (
+          <Link
+            href={`${dashboardSubpage}/add`}
+            className={buttonVariants({ variant: 'default' })}
+          >
+            Add {name}
+          </Link>
+        )}
+
+        {selectedRows.length === 1 && (
+          <>
+            <Link
+              href={`${dashboardSubpage}/${(data[selectedRows[0]] as { id: number }).id}/edit`}
+              className={buttonVariants({ variant: 'secondary' })}
+            >
+              Edit {name}
+            </Link>
+
+            <DropButton
+              buttonText={`Drop ${selectedRows.length} ${name}`}
+              resources={selectedRows.map(index => ({
+                id: (data[index] as RootEntity).id,
+                name: (data[index] as RootEntity).name
+              }))}
+            />
+          </>
+        )}
+
+        {selectedRows.length > 1 && (
+          <DropButton
+            buttonText={`Drop ${selectedRows.length} ${name}`}
+            resources={selectedRows.map(index => ({
+              id: (data[index] as RootEntity).id,
+              name: (data[index] as RootEntity).name
+            }))}
+          />
+        )}
       </div>
 
       {/* Right Section */}

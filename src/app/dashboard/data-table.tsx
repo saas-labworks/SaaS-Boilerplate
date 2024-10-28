@@ -10,7 +10,6 @@ import {
   SortingState,
   getSortedRowModel,
   VisibilityState
-  // PaginationState
 } from '@tanstack/react-table'
 
 import {
@@ -62,6 +61,7 @@ export function DataTable<TData, TValue>({
         table={table}
         dashboardSubpage={dashboardSubpage}
         name={name}
+        data={data}
       />
 
       <div className='rounded-md border'>
