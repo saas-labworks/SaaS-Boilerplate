@@ -1,4 +1,4 @@
-import { eq } from 'drizzle-orm'
+import { and, eq } from 'drizzle-orm'
 import { database, Currency, currencies } from '../db'
 
 type Pagination = {
@@ -19,9 +19,12 @@ export async function getCurrencies(userId: string, extras?: Extras) {
   })
 }
 
-export async function getCurrencyById(currencyId: number) {
+export async function getCurrencyById(currencyId: number, userId: string) {
   return await database.query.currencies.findFirst({
-    where: eq(currencies.id, currencyId)
+    where: and(
+      eq(currencies.id, currencyId),
+      eq(currencies.userId, userId)
+    )
   })
 }
 
@@ -29,7 +32,7 @@ export async function createCurrency(data: Omit<Currency, 'id'>) {
   await database.insert(currencies).values(data).execute()
 }
 
-export async function updateCurrency(currencyId: number, data: Currency) {
+export async function updateCurrency(currencyId: number, data: Omit<Currency, 'id'>) {
   await database
     .update(currencies)
     .set(data)
